@@ -25,7 +25,7 @@ export function EmailPreview({ email, onReadEmail }) {
                 </Link>
                     <p className="sent-at">{hours}:{minutes}{timeString}</p>
                 <button onClick={() => { onReadEmail(email.id) }} >{btnInnerText}</button>
-            {this.isRead&&<EmailDetails  email={email}/>}
+            {/* {this.isRead&&<EmailDetails  email={email}/>} */}
 
             </div>
         </li> 
