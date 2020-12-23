@@ -1,0 +1,8 @@
+.note-app main {
+  margin-top: 8rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
+  grid-template-rows: repeat(auto-fit, minmax(250px, 300px));
+  gap: 6rem;
+}
+
