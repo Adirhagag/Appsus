@@ -1,6 +1,7 @@
 import { noteService } from './services/note-service.js'
-import { NoteToShow } from './cmps/NoteToShow.jsx'
+import { NoteList } from './cmps/NoteList.jsx'
 import { utilService } from '../../services/utils.js'
+import { AddNoteInput } from './cmps/AddNoteInput.jsx'
 
 export class NoteApp extends React.Component {
 
@@ -26,11 +27,11 @@ export class NoteApp extends React.Component {
     return (
       <section className="note-app">
         <h1>Keep app</h1>
-        <input type="text" />
-
+        <AddNoteInput />
+        
         <main className="note-to-show">
           {notes.map((note) =>
-            <NoteToShow key={utilService.makeId()} currCmp={note.type} info={note.info} isPinned={note.isPinned}
+            <NoteList key={utilService.makeId()} currCmp={note.type} info={note.info} isPinned={note.isPinned}
               style={note.style} id={note.id} />
           )}
         </main>

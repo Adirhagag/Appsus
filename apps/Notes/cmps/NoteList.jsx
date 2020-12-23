@@ -3,7 +3,7 @@ import { NoteImg } from './NoteImg.jsx'
 import { NoteVideo } from './NoteVideo.jsx'
 import { NoteTodos } from './NoteTodos.jsx'
 
-export function NoteToShow({ currCmp, info, isPinned, style, id }) {
+export function NoteList({ currCmp, info, isPinned, style, id }) {
 
   switch (currCmp) {
     case 'NoteTxt':

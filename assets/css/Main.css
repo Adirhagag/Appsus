@@ -4,5 +4,5 @@
 @import './apps/email/EmailMain.css';
 
 @import './apps/note/NoteMain.css';
-@import './apps/note/cmps/NoteToShow.css';
+@import './apps/note/cmps/NoteList.css';
 
