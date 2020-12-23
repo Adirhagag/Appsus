@@ -2,9 +2,9 @@ import { storageService } from "../../../services/storage-service.js";
 
 export const emailService = {
   query,
-  getById,
+  getEmailById,
   save,
-  remove,
+  removeEmail,
   setEmailRead
 };
 const ENAIL_KEY = 'emailDB'
@@ -20,9 +20,9 @@ function query() {
   return Promise.resolve(emails);
 }
 
-function getById(bookId) {
-  const book = emails.find(book => book.id === bookId);
-  return Promise.resolve(book);
+function getEmailById(emailId) {
+  const email = emails.find(email => email.id === emailId);
+  return Promise.resolve(email);
 }
 
 function save(book, review) {
@@ -57,10 +57,12 @@ function _saveTostorage() {
   storageService.save(ENAIL_KEY, emails)
 
 }
-function remove(book, reviewIdx) {
-  // book.reviews = [...book.reviews]
-  book.reviews = book.reviews.filter((rev, idx) => idx !== reviewIdx);
-  return Promise.resolve(book);
+function removeEmail(emailId) {
+    const copyEmails=[...emails]
+  const emailsAfterRemoving = copyEmails.filter((email) => email.id !== emailId);
+  emails=copyEmails;
+  _saveTostorage()
+  
 }
 function setEmailRead(emailId){
     const email = emails.findIndex(email => email.id === emailId);

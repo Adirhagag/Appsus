@@ -16,3 +16,7 @@
     text-align: center;
     padding-top: 1rem;
 }
+.email-preview button{
+    border:none;
+    background: none;
+}
