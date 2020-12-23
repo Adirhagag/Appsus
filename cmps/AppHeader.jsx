@@ -22,8 +22,8 @@ function _AppHeader(props) {
 
         <ul className="main-nav">
             <li><NavLink activeClassName="my-active" exact to="/"><i className="fas fa-home">Home</i></NavLink></li>
-            <li><NavLink exact to="/mail"><i className="fas fa-envelope">Mail</i></NavLink></li>
-            <li><NavLink exact to="/keep"> <i className="fas fa-pager"></i>Keep</NavLink></li>
+            <li><NavLink exact to="/Email"><i className="fas fa-envelope">Email</i></NavLink></li>
+            <li><NavLink exact to="/Note"> <i className="fas fa-pager"></i>Note</NavLink></li>
         </ul>
         
     </header>;

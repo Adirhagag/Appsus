@@ -1,6 +1,6 @@
 
 
-export class MailApp extends React.Component {
+export class EmailApp extends React.Component {
 
   render() {
     return (

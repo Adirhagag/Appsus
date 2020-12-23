@@ -1,4 +1,4 @@
-export class KeepApp extends React.Component {
+export class NoteApp extends React.Component {
 
   render() {
     return (

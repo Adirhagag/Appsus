@@ -1,5 +1,5 @@
-import { MailApp } from './apps/Mail/MailApp.jsx'
-import { KeepApp } from './apps/Keep/KeepApp.jsx'
+import { EmailApp } from './apps/Email/EmailApp.jsx'
+import { NoteApp } from './apps/Notes/NoteApp.jsx'
 import { Home } from './pages/Home.jsx'
 import { AppHeader } from './cmps/AppHeader.jsx'
 // const { Link } = ReactRouterDOM;
@@ -19,8 +19,8 @@ export class RootCmp extends React.Component {
           {/* <UserMsg /> */}
           <Switch>
             {/* <Route path="/book" component={BookApp} /> */}
-            <Route path="/mail" component={MailApp} />
-            <Route path="/keep" component={KeepApp} />
+            <Route path="/email" component={EmailApp} />
+            <Route path="/note" component={NoteApp} />
             <Route path="/" component={Home} />
           </Switch>
         </section>
