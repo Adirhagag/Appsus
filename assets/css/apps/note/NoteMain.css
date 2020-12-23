@@ -2,11 +2,27 @@
 @import './cmps/NoteVideo.css';
 @import './cmps/NoteTodos.css';
 
+.note-app {
+  text-align: center;
+}
+
 .note-app main {
   margin-top: 8rem;
+  text-align: left;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
   grid-template-rows: repeat(auto-fit, minmax(250px, 300px));
   gap: 6rem;
 }
 
+.note-app .main-input {
+  width: 45rem;
+  height: 3rem;
+  font-size: 1.5rem;
+}
+
+
+.input-container img {
+  margin: 20px;
+  cursor: pointer;
+}
