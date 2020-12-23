@@ -1,3 +1,7 @@
+@import './cmps/NoteImg.css';
+@import './cmps/NoteVideo.css';
+@import './cmps/NoteTodos.css';
+
 .note-app main {
   margin-top: 8rem;
   display: grid;

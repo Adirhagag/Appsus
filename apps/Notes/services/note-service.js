@@ -27,7 +27,7 @@ function _getDemoNotes() {
     id: utilService.makeId(),
     isPinned: false,
     info: {
-      url: 'https://lh3.googleusercontent.com/proxy/ueFVnsIB8jbK2Xn5f03-N8ZPANwcsWkQ5msHQP2P_mO0Tpz_I72xH6h2mFYalIZHu8fnKz9X2-8Z2TGALp8JiWz6tKaotnZknFER_HYRzZhfKR14e806N96oLUf_a_xgKZUnrlht_ANhGul5n4E1CoAt2lJVcA9w-F0',
+      url: 'https://i.ytimg.com/vi/Zo_Y-n__Cbc/maxresdefault.jpg',
       title: 'Me playing Mi'
     },
     style: {
@@ -41,8 +41,8 @@ function _getDemoNotes() {
     info: {
       label: 'How was it:',
       todos: [
-        { txt: 'Do that', doneAt: null },
-        { txt: 'Do this', doneAt: 187111111 }
+        { txt: 'Do that', doneAt: null, isMarked: false },
+        { txt: 'Do this', doneAt: 187111111, isMarked: false }
       ]
     },
     style: {
@@ -54,7 +54,7 @@ function _getDemoNotes() {
     id: utilService.makeId(),
     isPinned: false,
     info: {
-      url: 'http://fake.url',
+      url: 'https://www.youtube.com/watch?v=vmAaVgUzNh8',
       title: 'speacial title'
     },
     style: {

@@ -1,0 +1,9 @@
+.note-video iframe {
+  height: 100%;
+  width: 100%;
+}
+
+.note-video .video-container {
+  margin-top: 0.5rem;
+  height: 80%;
+}

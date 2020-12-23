@@ -1,17 +1,13 @@
 
 
-export function NoteImg({ info, isPinned, style }) {
-  console.log(info.url);
-  console.log(info.title);
-  console.log(isPinned);
-  console.log(style.backgroundColor);
+export function NoteImg({ info, isPinned, style, id }) {
 
-    return (
-      <article className="note-img">
-        <h1>rendereing</h1>
-        <div>
-        <img src={info.url} alt=""/>
-        </div>
-      </article>
-    )
+  return (
+    <article className="note-img" style={{ backgroundColor: style.backgroundColor }}>
+      <h1>{info.title}</h1>
+      <div className="img-wrapper">
+        <img src={info.url} alt="" />
+      </div>
+    </article>
+  )
 }
