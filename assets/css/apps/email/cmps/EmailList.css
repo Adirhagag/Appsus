@@ -1,3 +1,7 @@
  .email-list ul{
     padding: 0;
 } 
+.email-list .count-unread{
+    right: 100%;
+    color: rgb(75, 71, 65);
+}

@@ -1,8 +1,9 @@
  li .email-preview {
     display: flex;
     justify-content: space-around;
-    padding: 15px;
+    padding: 2em;
     border: 1px solid #e1e0e0;
+    align-items: center;
 }
 /* .email-preview li:hover{
     cursor: pointer;
@@ -10,13 +11,27 @@
 .email-read{
     background-color: lightgray;
 }
-.sign-mail{
+.sign-mail {
     border-radius: 50%;
     width: 3.125rem;
+   
+}
+.sign-mail h1{
     text-align: center;
-    padding-top: 1rem;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
 }
 .email-preview button{
     border:none;
     background: none;
+}
+.email-preview button :hover{
+    border-radius: 50%;
+    background-color: rgb(151, 150, 148);
+    
+    padding: 1em;
+    text-align: center;
+}
+.email-preview a{
+    display: contents;
 }
