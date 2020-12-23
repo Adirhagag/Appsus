@@ -1,0 +1,27 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.home h1 {
+  font-size: 5rem;
+  color: #eded4c;
+  /* position: absolute; */
+  margin: 5rem auto 0px;
+  /* top: 30%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
+}
+
+.home div {
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.home p {
+  text-align: center;
+  font-size: 2rem;
+}
