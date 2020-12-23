@@ -40,8 +40,3 @@ export class NoteApp extends React.Component {
     )
   }
 }
-
-// {notes.map((note, idx) => <main key={idx}>
-// <NoteToShow currCmp={note.type} info={note.info} isPinned={note.isPinned}
-//   style={note.style}/>
-// </main>)}

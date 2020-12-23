@@ -1,11 +1,7 @@
 @import './apps/basics/base.css';
 @import './apps/basics/MainNav.css';
 @import './apps/basics/HomePage.css';
-<<<<<<< HEAD
 @import './apps/email/EmailMain.css';
-
-=======
 @import './apps/note/NoteMain.css';
 @import './apps/note/cmps/NoteToShow.css';
->>>>>>> 679152f24427493933f00fe34b526e70a169b852
 

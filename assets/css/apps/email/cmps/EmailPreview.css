@@ -4,9 +4,9 @@
     padding: 15px;
     border: 1px solid #e1e0e0;
 }
-li:hover{
+/* .email-preview li:hover{
     cursor: pointer;
-}
+} */
 .email-read{
     background-color: lightgray;
 }

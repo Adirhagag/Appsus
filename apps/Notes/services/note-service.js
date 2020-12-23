@@ -27,7 +27,7 @@ function _getDemoNotes() {
     id: utilService.makeId(),
     isPinned: false,
     info: {
-      url: 'http://some-img/me',
+      url: 'https://lh3.googleusercontent.com/proxy/ueFVnsIB8jbK2Xn5f03-N8ZPANwcsWkQ5msHQP2P_mO0Tpz_I72xH6h2mFYalIZHu8fnKz9X2-8Z2TGALp8JiWz6tKaotnZknFER_HYRzZhfKR14e806N96oLUf_a_xgKZUnrlht_ANhGul5n4E1CoAt2lJVcA9w-F0',
       title: 'Me playing Mi'
     },
     style: {
