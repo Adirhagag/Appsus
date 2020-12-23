@@ -1,4 +1,4 @@
-
+import {utilService} from "../../../services/utils.js"
 export function EmailPreview({ email,onReadEmail}) {
     var hours= new Date(email.sentAt).getHours();
     var minutes= new Date(email.sentAt).getMinutes();
@@ -8,7 +8,7 @@ var firstLetterSenderName = str.charAt(0).toUpperCase();
 
     return <li className={(email.isRead)?'email-read':''}>
                 <div className="email-preview ">
-                <div className="sign-mail" style={{ backgroundColor: 'pink' }}>{firstLetterSenderName}</div>
+                <div className="sign-mail" style={{ backgroundColor: utilService.getRandomColor() }}>{firstLetterSenderName}</div>
                 <p className="sender-name">{email.senderName}</p>
                 <h3 className="email-subject">{email.subject}</h3>
                 <p className="email-body">{email.body}</p>
