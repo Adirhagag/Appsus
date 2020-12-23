@@ -1,0 +1,18 @@
+ li .email-preview {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    border: 1px solid #e1e0e0;
+}
+li:hover{
+    cursor: pointer;
+}
+.email-read{
+    background-color: lightgray;
+}
+.sign-mail{
+    border-radius: 50%;
+    width: 3.125rem;
+    text-align: center;
+    padding-top: 1rem;
+}
