@@ -32,6 +32,7 @@ li .email-preview:hover{
 .email-preview button :hover{
     border-radius: 50%;
     background-color: rgb(151, 150, 148);
+    transition: .5s;
     
     padding: 1em;
     text-align: center;
