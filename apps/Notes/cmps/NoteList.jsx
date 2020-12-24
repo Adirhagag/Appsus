@@ -3,17 +3,17 @@ import { NoteImg } from './NoteImg.jsx'
 import { NoteVideo } from './NoteVideo.jsx'
 import { NoteTodos } from './NoteTodos.jsx'
 
-export function NoteList({ currCmp, info, isPinned, style, id }) {
+export function NoteList({ activePreview ,currCmp, info, isPinned, style, id }) {
 
   switch (currCmp) {
     case 'NoteTxt':
-      return <NoteTxt info={info} isPinned={isPinned} style={style} id={id}/>
+      return <NoteTxt activePreview={activePreview} info={info} isPinned={isPinned} style={style} id={id}/>
     case 'NoteImg':
-      return <NoteImg info={info} isPinned={isPinned} style={style} id={id}/>
+      return <NoteImg activePreview={activePreview} info={info} isPinned={isPinned} style={style} id={id}/>
     case 'NoteVideo':
-      return <NoteVideo info={info} isPinned={isPinned} style={style} id={id}/>
+      return <NoteVideo activePreview={activePreview} info={info} isPinned={isPinned} style={style} id={id}/>
     case 'NoteTodos':
-      return <NoteTodos info={info} isPinned={isPinned} style={style} id={id} />
+      return <NoteTodos activePreview={activePreview} info={info} isPinned={isPinned} style={style} id={id} />
   }
 
   return (

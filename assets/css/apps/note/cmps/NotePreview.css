@@ -1,0 +1,59 @@
+.note-preview {
+  position: absolute;
+  width: 60vw;
+  height: 60vh;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  font-size: 2rem;
+  z-index: 4;
+  pointer-events: all;
+  
+  display: flex;
+  flex-direction: column;
+}
+
+.note-preview .close {
+  cursor: pointer;
+  border: 1px solid black;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  padding: 0.4rem;
+  font-size: 1rem;
+  margin: 0px;
+}
+
+.note-preview .note-img-wrapper {
+  height: 80%;
+}
+
+.note-preview img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.note-preview .img-wrapper{
+  margin-top: 0.5rem;
+  height: 100%;
+}
+
+.note-preview .full-video-info {
+  height: 80%;
+}
+
+.note-preview iframe {
+  height: 100%;
+  width: 100%;
+}
+
+.note-preview .video-container {
+  margin-top: 0.5rem;
+  height: 100%;
+  width: 100%;
+}
+
+.note-preview .edit-btn {
+  margin-bottom: 0px;
+}

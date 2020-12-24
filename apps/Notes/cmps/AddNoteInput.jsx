@@ -13,7 +13,18 @@ export class AddNoteInput extends React.Component {
         backgroundColor: 'yellow'
       }
     },
-    isAddInput: false
+    isAddInput: false,
+    mainInputVal: ''
+  }
+
+  mainInputRef = React.createRef();
+
+  componentDidMount() {
+    this.mainInputRef.current.focus()
+  }
+
+  onMainInputChange = (ev) => {
+    this.setState({ mainInputVal: ev.target.value })
   }
 
   onKeySubmitMain = (ev) => {
@@ -82,6 +93,7 @@ export class AddNoteInput extends React.Component {
       }
     }
     copy.isAddInput = false
+    copy.mainInputVal = ''
     this.setState({
       placeHolder: copy.placeHolder,
       note: copy.note,
@@ -108,6 +120,7 @@ export class AddNoteInput extends React.Component {
     let copy = this.state.note;
     copy.type = type;
     this.setState({ placeHolder, note: copy }, () => console.log('copy', copy))
+    this.mainInputRef.current.focus();
   }
 
   render() {
@@ -120,8 +133,8 @@ export class AddNoteInput extends React.Component {
           <img src="./assets/img/video.png" onClick={() => this.onImgClick('NoteVideo')} />
         </div>
 
-        <input className="main-input" autoFocus type="text"
-          placeholder={this.state.placeHolder} onKeyDown={this.onKeySubmitMain} />
+        <input className="main-input" type="text" value={this.state.mainInputVal} ref={this.mainInputRef}
+          placeholder={this.state.placeHolder} onKeyDown={this.onKeySubmitMain} onChange={this.onMainInputChange} />
 
         {this.state.isAddInput && <input autoFocus type="text" onKeyDown={this.onKeySubmitSec} />}
       </div>

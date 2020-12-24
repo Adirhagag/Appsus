@@ -1,10 +1,10 @@
 
 
-export function NoteVideo({ info, isPinned, style, id }) {
+export function NoteVideo({ activePreview , info, isPinned, style, id }) {
 // check the embed thing
 
   return (
-    <article className="note-video" style={{ backgroundColor: style.backgroundColor }}>
+    <article onClick={() => activePreview(id)} className="note-video" style={{ backgroundColor: style.backgroundColor }}>
       <h1>{info.title}</h1>
     
       <div className="video-container">

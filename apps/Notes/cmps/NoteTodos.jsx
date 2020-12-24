@@ -16,7 +16,7 @@ export class NoteTodos extends React.Component {
   render() {
     const { info } = this.props;
     return (
-      <article className="note-todos" style={{ backgroundColor: this.props.style.backgroundColor }}>
+      <article onClick={() => this.props.activePreview(this.props.id)} className="note-todos" style={{ backgroundColor: this.props.style.backgroundColor }}>
         <h1>{info.title}</h1>
 
         <ul>

@@ -1,9 +1,9 @@
+import {noteService} from '../services/note-service.js'
 
-
-export function NoteTxt({ info, isPinned, style, id }) {
+export function NoteTxt({ activePreview , info, isPinned, style, id }) {
   
   return (
-    <article className="note-txt" style={{backgroundColor: style.backgroundColor}}>
+    <article onClick={() => activePreview(id)} className="note-txt" style={{backgroundColor: style.backgroundColor}}>
       <p>{info.txt}</p>
     </article>
   )

@@ -3,7 +3,8 @@ import { utilService } from '../../../services/utils.js'
 export const noteService = {
   qurey,
   addNoteToList,
-  getConvertedTodos
+  getConvertedTodos,
+  getNoteById
 }
 
 
@@ -25,7 +26,10 @@ function getConvertedTodos(commaSepList) {
   return words;
 }
 
-// function createNewNote(type, id, isPinned, info, style) {}
+function getNoteById(id) {
+  return gNotes.find((note) => note.id === id)
+  // return gNotes.find((note) => note.id === id)
+}
 
 function _getDemoNotes() {
   let notes = [{
@@ -43,7 +47,7 @@ function _getDemoNotes() {
     id: utilService.makeId(),
     isPinned: false,
     info: {
-      url: 'https://i.ytimg.com/vi/Zo_Y-n__Cbc/maxresdefault.jpg',
+      url: 'https://thumbs.dreamstime.com/b/funny-cat-smiling-tongue-very-smile-cardboard-134655541.jpg',
       title: 'Me playing Mi'
     },
     style: {
