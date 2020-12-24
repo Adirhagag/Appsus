@@ -1,6 +1,7 @@
 @import './cmps/NoteImg.css';
 @import './cmps/NoteVideo.css';
 @import './cmps/NoteTodos.css';
+@import './cmps/NoteTxt.css';
 
 .note-app {
   text-align: center;

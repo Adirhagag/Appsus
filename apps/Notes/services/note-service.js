@@ -1,7 +1,8 @@
 import { utilService } from '../../../services/utils.js'
 
 export const noteService = {
-  qurey
+  qurey,
+  addNoteToList
 }
 
 
@@ -10,6 +11,15 @@ let gNotes = _getDemoNotes();
 function qurey() {
   return Promise.resolve(gNotes);
 }
+
+function addNoteToList(note) {
+  let notesCopy = [...gNotes];
+  note.id = utilService.makeId();
+  notesCopy.unshift(note)
+  gNotes = notesCopy
+}
+
+// function createNewNote(type, id, isPinned, info, style) {}
 
 function _getDemoNotes() {
   let notes = [{
@@ -39,7 +49,7 @@ function _getDemoNotes() {
     id: utilService.makeId(),
     isPinned: false,
     info: {
-      label: 'How was it:',
+      title: 'How was it:',
       todos: [
         { txt: 'Do that', doneAt: null, isMarked: false },
         { txt: 'Do this', doneAt: 187111111, isMarked: false }

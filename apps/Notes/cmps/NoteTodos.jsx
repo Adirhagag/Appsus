@@ -17,7 +17,7 @@ export class NoteTodos extends React.Component {
     const { info } = this.props;
     return (
       <article className="note-todos" style={{ backgroundColor: this.props.style.backgroundColor }}>
-        <h1>{info.label}</h1>
+        <h1>{info.title}</h1>
 
         <ul>
           {info.todos.map((todo, idx) => <li onClick={() => this.onTodoClick(idx)}
