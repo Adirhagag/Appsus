@@ -2,7 +2,7 @@
 import { EmailPreview } from "./EmailPreview.jsx"
 
 export function EmailList({emails,onReadEmail,onRemoveEmail,countEmailUnread}) {
-    console.log(emails);
+
     return (
 
         <div className="email-list">

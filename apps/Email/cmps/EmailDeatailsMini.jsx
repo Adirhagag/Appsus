@@ -8,8 +8,10 @@
             <div className="email-deatils-mini ">
                 {/* <h4>{hours}:{minutes}(befor{currHour}hours)</h4> */}
                 <h1 className="email-subject">{email.subject}</h1>
-                <p className="sender-name">{email.senderName}</p>
+                <div className="sending-details">
+                <h3 className="sender-name">{email.senderName}</h3>
                 <p className="sender-mail">{`<${email.senderName}@gmail.com>`}</p>
+                </div>
                 <p className="email-body">{email.body}</p>
                
               

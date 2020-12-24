@@ -1,6 +1,18 @@
 .email-deatils-mini{
-    position: absolute;
-    /* width: 200px; */
+    display:flex;
+    flex-direction: column;
+  /* justify-content: center; */
 
-    height: 50px;
+  background-color: white;
+}
+.sending-details{
+    display: flex;
+    align-items: baseline;
+    
+}
+h1{
+    font-size: x-large;
+}
+p{
+    color: rgb(112, 107, 107);
 }

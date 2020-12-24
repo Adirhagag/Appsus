@@ -1,13 +1,13 @@
 import { emailService } from "./services/email-service.js"
 import { EmailList } from "./cmps/EmailList.jsx"
 import { EmailFilter } from "./cmps/EmailFilter.jsx"
-import {EmailStatus} from "./cmps/EmailStatus.jsx"
+import { EmailStatus } from "./cmps/EmailStatus.jsx"
 
 export class EmailApp extends React.Component {
   state = {
     emails: null,
     countEmailUnread: null,
-    countEmailRead:0,
+    countEmailRead: 0,
     filterBy: {
       text: '',
       read: '',
@@ -21,7 +21,7 @@ export class EmailApp extends React.Component {
   }
   loadEmails = () => {
     emailService.query().then(emails => {
-      this.setState({ emails }, () => console.log(this.state.emails))
+      this.setState({ emails })
     })
 
   }
@@ -50,24 +50,25 @@ export class EmailApp extends React.Component {
   }
 
 
-  getEmailsForDisplay () {
-    const { filterBy } = this.state;
-    // if (filterBy.read) {
-    //   emailService.getEmailRead().then(emailsRead => {
-    //     this.setState({ emails: emailsRead })
-    //   })
-    // }
-    // else if (filterBy.unread) {
-    //   emailService.getEmailUnread().then(emailsUnread => {
-    //     this.setState({ emails: emailsUnread }, () => console.log(this.state.emails))
-    //   })
+  getEmailsForDisplay() {
+    const { filterBy, emails } = this.state;
+    let copyEmails = [...emails]
+    if (filterBy.read) {
+      copyEmails = copyEmails.filter((email) => {
+        return email.isRead
+      });
 
-    // }
+
+    } else if (filterBy.unread) {
+      copyEmails = copyEmails.filter((email) => {
+        return !email.isRead
+      });
+
+    }
     const filterRegex = new RegExp(filterBy.text, 'i');
-    const filterEmails = this.state.emails.filter(email => filterRegex.test( email.body));
-    console.log('check');
+    copyEmails = copyEmails.filter(email => filterRegex.test(email.body));
 
-    return filterEmails
+    return copyEmails
   }
 
   onSetFilter = (filterBy) => {
@@ -82,9 +83,13 @@ export class EmailApp extends React.Component {
     const { filterBy } = this.state;
     return (
       <section className="email-app">
-        <EmailFilter onSetFilter={this.onSetFilter} />
-        <EmailList emails={this.getEmailsForDisplay()} onReadEmail={this.onReadEmail} onRemoveEmail={this.onRemoveEmail} countEmailUnread={countEmailUnread} />
-        <EmailStatus  countEmailRead={this.state.countEmailRead} emails={emails}/>
+        <div className="email-countiner">
+          <EmailStatus countEmailRead={this.state.countEmailRead} emails={emails} />
+          <div className="email-Searh">
+            <EmailFilter onSetFilter={this.onSetFilter} />
+            <EmailList emails={this.getEmailsForDisplay()} onReadEmail={this.onReadEmail} onRemoveEmail={this.onRemoveEmail} countEmailUnread={countEmailUnread} />
+          </div>
+        </div>
 
       </section>
     )

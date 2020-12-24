@@ -1,15 +1,38 @@
+import { EmailCompose } from "./EmailCompose.jsx"
 
-export function EmailStatus({countEmailRead,emails}) {
-    
+export class EmailStatus extends React.Component {
+    state={
+        isShowCompose:false
+    }
+    onShowFormSendingEmail=()=>{
+        this.setState({
+            isShowCompose:true
+        })
+    }
+    onCloseFormSendingEmail=()=>{
+        this.setState({
+            isShowCompose:false
+        })
+
+    }
+render() {
+    const { countEmailRead } = this.props
+    const { emails } = this.props
+    const {isShowCompose}=this.state
     return (
         <div className="email-status">
+            <button onClick={this.onShowFormSendingEmail}><i className="fa fa-plus">Compose</i></button>
             <div className="email-status-info">
-            <h1><i className="fa fa-inbox"></i>inbox ({countEmailRead}/{emails.length})</h1>
-            <progress  value="50" max="100"> {countEmailRead}% </progress>
-            
+                <h1><i className="fa fa-inbox"></i>inbox ({countEmailRead}/{emails.length})</h1>
+                <progress value={countEmailRead} max="100"> {countEmailRead}% </progress>
+
+            </div>
+            {isShowCompose&&<EmailCompose onCloseFormSendingEmail={this.onCloseFormSendingEmail}/>}
         </div>
-        </div>
+
     )
+        
+}
 
 
 }

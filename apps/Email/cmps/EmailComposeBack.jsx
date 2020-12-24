@@ -1,12 +1,12 @@
 import { utilService } from "../../../services/utils.js";
 import { emailService } from "../services/email-service.js";
 
-export class EmailCompose extends React.Component {
+export class EmailComposeBack extends React.Component {
 
     state = {
         email:  { 
             id: utilService.makeId(),
-             senderName: '',
+             senderName: this.props.senderName,
               subject: null,
                body: '',
                 isRead: false, 
@@ -15,22 +15,11 @@ export class EmailCompose extends React.Component {
     };
 
     refInput = React.createRef();
-
-    // componentDidMount() {
-    //     const { petId } = this.props.match.params;
-    //     // console.log('this.elInput:', this.elInput);
-    //     this.refInput.current.focus();
-    //     if (!petId) return;
-    //     petService.getById(petId).then(pet => {
-    //         this.setState({ pet });
-    //     });
-    // }
-
-
+    
     onSendEmail = (ev) => {//on submit
         ev.preventDefault();
         const callback = () => {
-            this.props.onCloseFormSendingEmail();
+            this.props.ontoggleSendEmailBack();
         };
 
         if (!this.state.email.subject ) {
@@ -53,26 +42,27 @@ export class EmailCompose extends React.Component {
         });
     };
 
- 
+    onAnimate = () =>{
+        this.refInput.current.classList.add('animate__animated','animate__tada');
+        setTimeout(()=>{
+            this.refInput.current.classList.remove('animate__animated','animate__tada');
+        }, 1000)
+    }
 
     render() {
       
         return (
-            <div className="email-compose-continer">
-                <div className="title-form">
-            <h3>New Messege</h3>
-            <button className="btn-close-form" onClick={this.props.onCloseFormSendingEmail}><i className="fa fa-times"></i></button>
-            </div>
+            <div className="email-compose-back" onClick={this.onAnimate}>
+                <button onClick={this.props.ontoggleSendEmailBack}>Close</button>
             <form onSubmit={this.onSendEmail} className="email-compose">
                 <input ref={this.refInput}
-                    placeholder="To:" type="text" name="senderName"
-                    onChange={this.onInputChange} />
+                    placeholder={`To:<${this.props.senderName}@gmail.com>`} type="text" name="senderName" />
 
                 <input  required
                     placeholder="subject:" type="text" name="subject"
                     onChange={this.onInputChange} />
-                  <textarea  name="body" rows="10" cols="80" onChange={this.onInputChange}></textarea>
-                <button type="submit">Send</button>
+                  <textarea  name="body" rows="3" cols="80" onChange={this.onInputChange}></textarea>
+                <button type="submit">Send Back</button>
                 
             </form>
  
