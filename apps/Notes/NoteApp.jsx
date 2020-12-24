@@ -27,8 +27,7 @@ export class NoteApp extends React.Component {
     return (
       <section className="note-app">
         <h1>Keep app</h1>
-        <AddNoteInput />
-        
+        <AddNoteInput loadNotes={this.loadNotes}/>
         <main className="note-to-show">
           {notes.map((note) =>
             <NoteList key={utilService.makeId()} currCmp={note.type} info={note.info} isPinned={note.isPinned}

@@ -29,8 +29,12 @@ export function EmailPreview({ email, onReadEmail,onRemoveEmail }) {
                     <button className="remove-btn" onClick={ () => onRemoveEmail(email.id)}><i className="fa fa-trash-alt"></i></button>
                 <button onClick={() => { onReadEmail(email.id) }} >{btnInnerText}</button>
                 </div>
+<<<<<<< HEAD
                 {email.isRead&&<EmailDetailsMini  email={email}/>}
          
+=======
+            {/* {email.isRead&&<EmailDetails  email={email}/>} */}
+>>>>>>> 0e24e5fea1e030189b0f33ee9078ada0022ef1db
 
             </div>
         </li> 
