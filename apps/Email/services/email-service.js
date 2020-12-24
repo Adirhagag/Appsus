@@ -8,9 +8,10 @@ export const emailService = {
     setEmailRead,
     doConfirm,
     getCountUnreadEmail,
-
+    sortByTitle,
      getCountReadEmail,
      addEmail,
+     sortByDate
 };
 const EMAIL_KEY = 'emailDB'
 
@@ -33,6 +34,20 @@ function getEmailById(emailId) {
     const email = gEmails.find(email => email.id === emailId);
     return Promise.resolve(email);
     
+}
+function sortByTitle(emailsToSort){
+   emailsToSort= emailsToSort.sort((email1,email2)=>{
+        if(email1.subject.toLowerCase()>email2.subject.toLowerCase()) return 1
+        else if (email1.subject.toLowerCase()  < email2.subject.toLowerCase() ) return -1;
+        else return 0;
+    })
+    return emailsToSort
+}
+function sortByDate(emailsToSort){
+    emailsToSort=emailsToSort.sort((email1,email2)=> {
+        return email2.sentAt - email1.sentAt
+    })
+    return  emailsToSort
 }
 
 function save(book, review) {

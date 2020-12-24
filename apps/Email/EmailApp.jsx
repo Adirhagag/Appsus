@@ -13,6 +13,10 @@ export class EmailApp extends React.Component {
       read: '',
       unread: '',
     },
+    sortBy:{
+      title:true,
+      date:''
+  }
   }
   componentDidMount() {
     this.loadEmails();
@@ -51,14 +55,21 @@ export class EmailApp extends React.Component {
 
 
   getEmailsForDisplay() {
-    const { filterBy, emails } = this.state;
+    const { filterBy, emails,sortBy } = this.state;
     let copyEmails = [...emails]
+    if(sortBy.title){
+      copyEmails=emailService.sortByTitle(copyEmails)
+
+    }
+    else if(sortBy.date){
+      console.log('111');
+      copyEmails=emailService.sortByDate(copyEmails)
+
+    }
     if (filterBy.read) {
       copyEmails = copyEmails.filter((email) => {
         return email.isRead
       });
-
-
     } else if (filterBy.unread) {
       copyEmails = copyEmails.filter((email) => {
         return !email.isRead
@@ -75,7 +86,17 @@ export class EmailApp extends React.Component {
     // console.log('filterBy:', filterBy);
     this.setState({ filterBy });
   }
+  onSetSort=(sortBy)=>{
+    this.setState({sortBy})
+  }
+  onAddEmail=(emailToAdd)=>{
+    emailService.addEmail(emailToAdd)
+    this.loadEmails();
+    this.loadCountEmailUnread()
+    this.loadCountEmailRead();
+    
 
+  }
   render() {
     const { emails, countEmailUnread } = this.state
     if (!emails) return null;
@@ -84,9 +105,9 @@ export class EmailApp extends React.Component {
     return (
       <section className="email-app">
         <div className="email-countiner">
-          <EmailStatus countEmailRead={this.state.countEmailRead} emails={emails} />
+          <EmailStatus countEmailRead={this.state.countEmailRead} emails={emails} onAddEmail={this.onAddEmail} />
           <div className="email-Searh">
-            <EmailFilter onSetFilter={this.onSetFilter} />
+            <EmailFilter onSetFilter={this.onSetFilter} onSetSort={this.onSetSort} />
             <EmailList emails={this.getEmailsForDisplay()} onReadEmail={this.onReadEmail} onRemoveEmail={this.onRemoveEmail} countEmailUnread={countEmailUnread} />
           </div>
         </div>

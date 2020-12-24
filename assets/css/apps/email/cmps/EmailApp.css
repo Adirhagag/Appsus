@@ -1,6 +1,11 @@
 .email-countiner{
     display: flex;
+    gap:2rem;
 }
 .email-Searh{
     flex: 1;
+}
+.email-app{
+    /* max-width: 1600px; */
+    margin: auto;
 }

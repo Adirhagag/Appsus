@@ -27,7 +27,7 @@ render() {
                 <progress value={countEmailRead} max="100"> {countEmailRead}% </progress>
 
             </div>
-            {isShowCompose&&<EmailCompose onCloseFormSendingEmail={this.onCloseFormSendingEmail}/>}
+            {isShowCompose&&<EmailCompose onCloseFormSendingEmail={this.onCloseFormSendingEmail} onAddEmail={this.props.onAddEmail}/>}
         </div>
 
     )

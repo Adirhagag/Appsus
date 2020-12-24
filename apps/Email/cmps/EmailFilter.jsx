@@ -7,6 +7,10 @@ export class EmailFilter extends React.Component {
             read: '',
             unread: '',
         },
+        sortBy:{
+            title:true,
+            date:''
+        }
     }
     componentDidMount(){
         this.refInput.current.focus();
@@ -24,7 +28,19 @@ export class EmailFilter extends React.Component {
 
         this.setState({filterBy}, callback);
     };
-    
+    onSetSort=(ev)=>{
+        const callback = () => {
+            this.props.onSetSort(this.state.sortBy);
+        };
+        let value=( ev.target.value);
+        console.log(value);
+        let sortBy={...this.state.sortBy}
+        sortBy[value]=true;
+       
+        if(value==='date')sortBy['title']=false;
+        else if(value==='title')sortBy['date']=false
+        this.setState({sortBy},callback);
+    }
     render() {
         return <div className="email-filter">
             <input type="text" placeholder="filter email by text :" name="text" onChange={this.handelChange}  ref={this.refInput}/>
@@ -32,8 +48,11 @@ export class EmailFilter extends React.Component {
             < label htmlFor="read">Read</label><br></br>
             <input type="checkbox" name="unread" id="Unread"  onChange={this.handelChange} ></input>
             < label htmlFor="Unread">Unread</label><br></br>
-            {/* <input type="number" value={this.state.fromPrice} name="fromPrice" onChange={this.handelChange} />
-            <input type="number" value={this.state.toPrice} name="toPrice" onChange={this.handelChange} /> */}
+            <select onChange={this.onSetSort}>
+                <option value="title">Sort By Title</option>
+                <option value="date">Sort By Date</option>
+               
+            </select>
         </div>
     }
 
