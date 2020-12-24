@@ -1,3 +1,11 @@
-.email-deatils btn {
+/* .email-deatils btn {
     border-radius: 50%;
+} */
+.email-deatils{
+    background-color: #eff178;
+    width: 50%;
+    height: 80vh;
+    margin: auto;
+    /* padding: 10px; */
+    margin-top: 1em; 
 }
