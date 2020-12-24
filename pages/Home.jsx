@@ -10,9 +10,9 @@ export function Home() {
            voluptatibus vel? Cupiditate, cum?</p>
 
       <div>
-        <img src="../assets/img/email.png" alt="" />
-        <img src="../assets/img/notes.png" alt="" />
-        <img src="../assets/img/book.png" alt="" />
+        <img src="./assets/img/email.png" alt="" />
+        <img src="./assets/img/notes.png" alt="" />
+        <img src="./assets/img/book.png" alt="" />
       </div>
     </section>
   )
