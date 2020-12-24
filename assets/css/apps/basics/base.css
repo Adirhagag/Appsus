@@ -25,3 +25,6 @@ a {
   pointer-events: none;
   /* filter: blur(5px); */
 }
+button{
+  cursor: pointer;
+}

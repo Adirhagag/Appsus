@@ -1,0 +1,6 @@
+.email-countiner{
+    display: flex;
+}
+.email-Searh{
+    flex: 1;
+}

@@ -5,3 +5,6 @@
     right: 100%;
     color: rgb(75, 71, 65);
 }
+.email-list{
+    flex: 1;
+}

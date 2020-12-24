@@ -17,6 +17,7 @@ export function EmailPreview({ email, onReadEmail,onRemoveEmail }) {
     return (
 
         <li className={(email.isRead) ? 'email-read' : ''}>
+           
             <div className="email-preview ">
                 <div className="sign-mail" style={{ backgroundColor: utilService.getRandomColor() }}><h1>{firstLetterSenderName}</h1></div>
                 <Link to={`/email/${email.id}`}>
@@ -29,10 +30,10 @@ export function EmailPreview({ email, onReadEmail,onRemoveEmail }) {
                     <button className="remove-btn" onClick={ () => onRemoveEmail(email.id)}><i className="fa fa-trash-alt"></i></button>
                 <button onClick={() => { onReadEmail(email.id) }} >{btnInnerText}</button>
                 </div>
-                {email.isRead&&<EmailDetailsMini  email={email}/>}
          
 
             </div>
+            {email.isRead&&<EmailDetailsMini  email={email}/>}
         </li> 
     )
 

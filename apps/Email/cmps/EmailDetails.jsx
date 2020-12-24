@@ -1,8 +1,10 @@
 import { emailService } from "../services/email-service.js"
+import {EmailComposeBack} from "../cmps/EmailComposeBack.jsx"
 
 export class EmailDetails extends React.Component {
     state = {
-        email: null
+        email: null,
+        isSendEmailBack:false
     }
 
     loadBook() {
@@ -19,6 +21,9 @@ export class EmailDetails extends React.Component {
             this.setState({ email });
         });
     }
+    ontoggleSendEmailBack=()=>{
+        this.setState({isSendEmailBack:!this.state.isSendEmailBack})
+    }
 
     render() {
         const { email } = this.state
@@ -29,7 +34,7 @@ export class EmailDetails extends React.Component {
 
         return (
             <div className="email-deatils ">
-                <div class="email-title">
+                <div className="email-title">
                 <p className="sender-mail">{`send from:<${email.senderName}@gmail.com>`}</p>
                 <h4>{hours}:{minutes}(befor{currHour}hours)</h4>
                 </div>
@@ -37,8 +42,9 @@ export class EmailDetails extends React.Component {
                 <h1 className="email-subject"> email subject :{email.subject}</h1>
                 {/* <h2 className="sender-name"> email send from:{email.senderName}</h2> */}
                 <h2 className="email-body">{email.body}</h2>
-                <button><i className="fa fa-reply"></i></button>
+                <button onClick={ ()=>this.ontoggleSendEmailBack()}>Replay<i className="fa fa-reply"></i></button>
                 </div>
+                { this.state.isSendEmailBack&&<EmailComposeBack senderName={this.state.email.senderName} ontoggleSendEmailBack={this.ontoggleSendEmailBack}/>}
 
 
                 

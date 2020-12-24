@@ -1,11 +1,24 @@
-/* progress[value]  {
-    -webkit-writing-mode: horizontal-tb !important;
+progress[value] {
+    /* Reset the default appearance */
     -webkit-appearance: none;
      appearance: none;
   
     width: 250px;
     height: 20px;
-} */
+  }
+  progress[value]::-webkit-progress-value {
+    background-image:
+         -webkit-linear-gradient(-45deg, 
+                                 transparent 33%, rgba(0, 0, 0, .1) 33%, 
+                                 rgba(0,0, 0, .1) 66%, transparent 66%),
+         -webkit-linear-gradient(top, 
+                                 rgba(255, 255, 255, .25), 
+                                 rgba(0, 0, 0, .25)),
+         -webkit-linear-gradient(left, rgb(199, 186, 110), rgb(255, 236, 68));
+  
+      border-radius: 2px; 
+      background-size: 35px 20px, 100% 100%, 100% 100%;
+  }
   .email-status h1{
     border-radius: 10%;
     background-color: #d6d7804a;
@@ -13,3 +26,25 @@
     padding: 0.2rem;
     color: #dfe259;
   }
+  .email-status-info{
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+  }
+  .email-status button{
+    color: #c2c1c1;
+    border: 2px solid #c2c2c2;
+    background-color: #fff;
+    border-radius: 2em;
+    position: relative;
+    line-height: 3em;
+    font-size: 1em;
+    align-self: flex-start;
+    padding: 0 3em;
+    transition: padding .3s;
+}
+.email-status{
+  display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
