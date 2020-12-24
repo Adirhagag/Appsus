@@ -16,44 +16,34 @@ export class AddNoteInput extends React.Component {
     isAddInput: false
   }
 
-  onMainInputChange = (ev) => {
-    // console.log(ev.target.value)
-    // this.setState({note: 'noti'})
-  }
-
-  onSecInputChange = (ev) => {
-    console.log(ev.target.value)
-  }
-
   onKeySubmitMain = (ev) => {
     if (ev.key !== 'Enter') return;
-
     const { type } = this.state.note
-
     if (type === 'NoteTxt') this.addTxtNote(ev);
-    else if (type === 'NoteImg') this.addInput(ev);
+    else if (type === 'NoteImg' || type === 'NoteVideo') this.addInput('url', ev);
+    else if (type === 'NoteTodos') this.handleTodoAdd(ev);
   }
 
   onKeySubmitSec = (ev) => {
     if (ev.key !== 'Enter') return;
-    let copy = this.state.info;
-    // copy.title = ev.target.value;
-    // this.setState({info: copy})
+    let noteCopy = this.state.note;
+    noteCopy.info.title = ev.target.value;
+    this.setState({ note: noteCopy }, () => {
+      noteService.addNoteToList(this.state.note)
+      this.props.loadNotes();
+      this.reasetState()
+    })
   }
 
-  addInput = (ev) => {
-    const url = ev.target.value;
-    let infoCopy = this.state.note.info;
-    infoCopy.url = url
-
-    this.setState({ isAddInput: true }) //continue from here dont confused names
-    // let copy = this.state.note;
-    // copy.info = { txt }
-    // this.setState({ note: copy }, () => {
-    //   noteService.addNoteToList(this.state.note)
-    //   this.props.loadNotes();
-    //   this.reasetState()
-    // })
+  addInput = (type, ev) => {
+    if (type === 'url') {
+      const url = ev.target.value;
+      let noteCopy = this.state.note;
+      noteCopy.info = { url }
+      this.setState({ isAddInput: true, note: noteCopy })
+    } else if (type === 'todo') {
+      this.setState({ isAddInput: true })
+    }
   }
 
   addTxtNote = (ev) => {
@@ -65,6 +55,19 @@ export class AddNoteInput extends React.Component {
       this.props.loadNotes();
       this.reasetState()
     })
+  }
+
+  handleTodoAdd = (ev) => {
+    let words = noteService.getConvertedTodos(ev.target.value);
+    let noteCopy = this.state.note;
+
+    let readyTodos = words.map((word) => {
+      return { txt: `${word}`, doneAt: null, isMarked: false }
+    });
+
+    noteCopy.info = { todos: readyTodos }
+    this.setState({ note: noteCopy })
+    this.addInput('todo')
   }
 
   reasetState = () => {
@@ -107,8 +110,6 @@ export class AddNoteInput extends React.Component {
     this.setState({ placeHolder, note: copy }, () => console.log('copy', copy))
   }
 
-
-
   render() {
     return (
       <div className="input-container">
@@ -120,11 +121,9 @@ export class AddNoteInput extends React.Component {
         </div>
 
         <input className="main-input" autoFocus type="text"
-          placeholder={this.state.placeHolder} onChange={this.onMainInputChange}
-          onKeyDown={this.onKeySubmitMain} />
+          placeholder={this.state.placeHolder} onKeyDown={this.onKeySubmitMain} />
 
-        {this.state.isAddInput && <input autoFocus type="text"
-          onChange={this.onSecInputChange} onKeyDown={this.onKeySubmitSec} />}
+        {this.state.isAddInput && <input autoFocus type="text" onKeyDown={this.onKeySubmitSec} />}
       </div>
     )
   }

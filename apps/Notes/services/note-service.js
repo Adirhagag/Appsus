@@ -2,7 +2,8 @@ import { utilService } from '../../../services/utils.js'
 
 export const noteService = {
   qurey,
-  addNoteToList
+  addNoteToList,
+  getConvertedTodos
 }
 
 
@@ -17,6 +18,11 @@ function addNoteToList(note) {
   note.id = utilService.makeId();
   notesCopy.unshift(note)
   gNotes = notesCopy
+}
+
+function getConvertedTodos(commaSepList) {
+  let words = commaSepList.split(',');
+  return words;
 }
 
 // function createNewNote(type, id, isPinned, info, style) {}
@@ -64,7 +70,7 @@ function _getDemoNotes() {
     id: utilService.makeId(),
     isPinned: false,
     info: {
-      url: 'https://www.youtube.com/watch?v=vmAaVgUzNh8',
+      url: 'https://www.youtube.com/embed/vmAaVgUzNh8',
       title: 'speacial title'
     },
     style: {

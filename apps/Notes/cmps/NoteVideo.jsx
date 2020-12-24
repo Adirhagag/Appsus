@@ -8,7 +8,7 @@ export function NoteVideo({ info, isPinned, style, id }) {
       <h1>{info.title}</h1>
     
       <div className="video-container">
-        <iframe width="420" height="345" src="https://www.youtube.com/embed/vmAaVgUzNh8">
+        <iframe width="420" height="345" src={info.url}>
         </iframe>
       </div>
     </article>
