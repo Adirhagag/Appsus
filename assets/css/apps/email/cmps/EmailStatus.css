@@ -1,0 +1,15 @@
+progress[value]  {
+    -webkit-writing-mode: horizontal-tb !important;
+    -webkit-appearance: none;
+     appearance: none;
+  
+    width: 250px;
+    height: 20px;
+}
+  .email-status h1{
+    border-radius: 10%;
+    background-color: #d6d7804a;
+    width: 9rem;
+    padding: 0.2rem;
+    color: #dfe259;
+  }

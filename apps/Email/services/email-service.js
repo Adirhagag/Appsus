@@ -7,7 +7,10 @@ export const emailService = {
     removeEmail,
     setEmailRead,
     doConfirm,
-    getCountUnreadEmail
+    getCountUnreadEmail,
+    getEmailUnread,
+     getEmailRead,
+     getCountReadEmail
 };
 const ENAIL_KEY = 'emailDB'
 
@@ -21,10 +24,28 @@ window.theEmails = gEmails;
 function query() {
     return Promise.resolve(gEmails);
 }
+function getEmailUnread(){
+    let  copyEmails=[...gEmails]
+    copyEmails=copyEmails.filter( (email)=>{
+        return !email.isRead
+    });
+   
+    return Promise.resolve(copyEmails);
+}
+function getEmailRead(){
+    let  copyEmails=[...gEmails]
+    copyEmails=copyEmails.filter((email)=>{
+        return email.isRead
+    });
+   console.log('read',copyEmails);
+  
+    return Promise.resolve(copyEmails);
+}
 
 function getEmailById(emailId) {
     const email = gEmails.find(email => email.id === emailId);
     return Promise.resolve(email);
+    
 }
 
 function save(book, review) {
@@ -46,7 +67,7 @@ function _createEmails() {
     if (!emailsFromStorage || !emailsFromStorage.length) {
         emailsFromStorage = [
             { id: 'hgroo', senderName: 'yeal', subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 },
-            { id: 'dbhfek', senderName: 'adir', subject: 'hi?', body: 'Pick up!', isRead: true, sentAt: 1551133930594 },
+            { id: 'dbhfek', senderName: 'adir', subject: 'hi?', body: 'hello long time no see!', isRead: true, sentAt: 1551133930594 },
 
         ]
 
@@ -78,7 +99,14 @@ function getCountUnreadEmail() {
     console.log(unreadEmail);
     return Promise.resolve(unreadEmail)
 }
-
+function getCountReadEmail() {
+    const readEmail = gEmails.reduce((acc, email) => {
+        if (email.isRead) acc++;
+        return acc
+    }, 0);
+    console.log('read mail',readEmail);
+    return Promise.resolve(readEmail)
+}
 function setEmailRead(emailId) {
     const email = gEmails.findIndex(email => email.id === emailId);
     const copyEmails = [...gEmails]
@@ -92,7 +120,7 @@ function doConfirm(msg) {
         keepResolve = resolve;
     });
     return prm;
-    // return Promise.resolve(res);
+   
 }
 
 

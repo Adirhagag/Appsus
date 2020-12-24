@@ -1,6 +1,7 @@
 import { utilService } from "../../../services/utils.js"
 import { EmailDetails } from "./EmailDetails.jsx"
 import { emailService } from "../services/email-service.js"
+import {EmailDetailsMini} from "./EmailDeatailsMini.jsx"
 const { Link } = ReactRouterDOM;
 
 
@@ -27,12 +28,9 @@ export function EmailPreview({ email, onReadEmail,onRemoveEmail }) {
                  <div className="email-read-btn">
                     <button className="remove-btn" onClick={ () => onRemoveEmail(email.id)}><i className="fa fa-trash-alt"></i></button>
                 <button onClick={() => { onReadEmail(email.id) }} >{btnInnerText}</button>
-<<<<<<< HEAD
                 </div>
-            {/* {email.isRead&&<EmailDetails  email={email}/>} */}
-=======
-            {/* {this.isRead&&<EmailDetails  email={email}/>} */}
->>>>>>> 6f67a2d91b979f5fa146627aff2a454207fef5de
+                {email.isRead&&<EmailDetailsMini  email={email}/>}
+         
 
             </div>
         </li> 

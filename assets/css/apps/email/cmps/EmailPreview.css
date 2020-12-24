@@ -1,9 +1,14 @@
  li .email-preview {
     display: flex;
     justify-content: space-around;
-    padding: 2em;
+    padding: 0.5em;
     border: 1px solid #e1e0e0;
     align-items: center;
+   position: relative;
+    max-height: 100vh;
+    border-left: 1px solid #616060;
+  
+    transition: max-height .8s;
 }
 /* .email-preview li:hover{
     cursor: pointer;
