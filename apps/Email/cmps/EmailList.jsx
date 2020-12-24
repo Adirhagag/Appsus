@@ -1,7 +1,7 @@
 
 import { EmailPreview } from "./EmailPreview.jsx"
 
-export function EmailList({emails,onReadEmail,onRemoveEmail,countEmailUnread}) {
+export function EmailList({emails,onReadEmail,onRemoveEmail,countEmailUnread,onStarred}) {
 
     return (
 
@@ -10,7 +10,7 @@ export function EmailList({emails,onReadEmail,onRemoveEmail,countEmailUnread}) {
             <ul>
            { emails.map(email => {
                
-                return <EmailPreview key={email.id} email={email} onReadEmail={onReadEmail}  onRemoveEmail={onRemoveEmail}/>;
+                return <EmailPreview key={email.id} email={email} onReadEmail={onReadEmail}  onRemoveEmail={onRemoveEmail} onStarred={onStarred}/>;
 
                 })}
             </ul>

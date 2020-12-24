@@ -24,7 +24,7 @@ render() {
             <button onClick={this.onShowFormSendingEmail}><i className="fa fa-plus">Compose</i></button>
             <div className="email-status-info">
                 <h1><i className="fa fa-inbox"></i>inbox ({countEmailRead}/{emails.length})</h1>
-                <progress value={countEmailRead} max="100"> {countEmailRead}% </progress>
+                <progress value={countEmailRead} max={emails.length}> {countEmailRead}% </progress>
 
             </div>
             {isShowCompose&&<EmailCompose onCloseFormSendingEmail={this.onCloseFormSendingEmail} onAddEmail={this.props.onAddEmail}/>}

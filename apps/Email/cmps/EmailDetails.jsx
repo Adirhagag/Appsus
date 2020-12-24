@@ -38,6 +38,7 @@ export class EmailDetails extends React.Component {
                 <p className="sender-mail">{`send from:<${email.senderName}@gmail.com>`}</p>
                 <h4>{hours}:{minutes}(befor{currHour}hours)</h4>
                 </div>
+                
                 <div className="email-details-info">
                 <h1 className="email-subject"> email subject :{email.subject}</h1>
                 {/* <h2 className="sender-name"> email send from:{email.senderName}</h2> */}

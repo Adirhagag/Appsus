@@ -46,6 +46,12 @@ export class EmailApp extends React.Component {
     this.loadCountEmailRead();
 
   }
+  onStarred=(emailId)=>{
+    emailService.setEmailStarres(emailId)
+    this.loadEmails();
+    this.loadCountEmailUnread()
+    this.loadCountEmailRead();
+  }
   onRemoveEmail = (emailId) => {
     emailService.removeEmail(emailId)
     this.loadEmails();
@@ -108,7 +114,7 @@ export class EmailApp extends React.Component {
           <EmailStatus countEmailRead={this.state.countEmailRead} emails={emails} onAddEmail={this.onAddEmail} />
           <div className="email-Searh">
             <EmailFilter onSetFilter={this.onSetFilter} onSetSort={this.onSetSort} />
-            <EmailList emails={this.getEmailsForDisplay()} onReadEmail={this.onReadEmail} onRemoveEmail={this.onRemoveEmail} countEmailUnread={countEmailUnread} />
+            <EmailList emails={this.getEmailsForDisplay()} onReadEmail={this.onReadEmail} onRemoveEmail={this.onRemoveEmail} countEmailUnread={countEmailUnread} onStarred={this.onStarred} />
           </div>
         </div>
 

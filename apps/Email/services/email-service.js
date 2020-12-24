@@ -11,7 +11,8 @@ export const emailService = {
     sortByTitle,
      getCountReadEmail,
      addEmail,
-     sortByDate
+     sortByDate,
+     setEmailStarres
 };
 const EMAIL_KEY = 'emailDB'
 
@@ -68,8 +69,8 @@ function _createEmails() {
     var emailsFromStorage = storageService.load(EMAIL_KEY)
     if (!emailsFromStorage || !emailsFromStorage.length) {
         emailsFromStorage = [
-            { id: 'hgroo', senderName: 'yeal', subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594 },
-            { id: 'dbhfek', senderName: 'adir', subject: 'hi?', body: 'hello long time no see!', isRead: true, sentAt: 1551133930594 },
+            { id: 'hgroo', senderName: 'yeal', subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594,isstarred:false},
+            { id: 'dbhfek', senderName: 'adir', subject: 'hi?', body: 'hello long time no see!', isRead: true, sentAt: 1551133930594,isstarred:false },
 
         ]
 
@@ -116,6 +117,14 @@ function setEmailRead(emailId) {
     gEmails = copyEmails;
     _saveTostorage();
     
+}
+function setEmailStarres(emailId){
+    const email = gEmails.findIndex(email => email.id === emailId);
+    const copyEmails = [...gEmails]
+    copyEmails[email].isstarred = !copyEmails[email].isstarred
+    gEmails = copyEmails;
+    _saveTostorage();
+
 }
 function doConfirm(msg) {
     const prm = new Promise((resolve) => {
