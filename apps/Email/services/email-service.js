@@ -12,12 +12,15 @@ export const emailService = {
      getCountReadEmail,
      addEmail,
      sortByDate,
-     setEmailStarres
+     setEmailStarres,
+     getEmailStarres,
+     getEmailSent
 };
 const EMAIL_KEY = 'emailDB'
 
 
 var gEmails;
+var emailsSent=[];
 _createEmails();
 
 
@@ -28,9 +31,12 @@ function query() {
 }
 function addEmail(emailToAdd){
      gEmails=[emailToAdd,...gEmails];
+     emailsSent.push(emailToAdd)
     _saveTostorage();
 }
-
+function getEmailSent(){
+    return Promise.resolve(emailsSent);
+}
 function getEmailById(emailId) {
     const email = gEmails.find(email => email.id === emailId);
     return Promise.resolve(email);
@@ -76,7 +82,6 @@ function _createEmails() {
 
     }
     gEmails = emailsFromStorage
-    console.log(gEmails)
     _saveTostorage()
 }
 function _saveTostorage() {
@@ -90,7 +95,6 @@ function removeEmail(emailId) {
     copyEmails = copyEmails.filter(email => email.id !== emailId);
 
     gEmails = copyEmails;
-    console.log(gEmails);
     _saveTostorage()
 
 }
@@ -99,7 +103,6 @@ function getCountUnreadEmail() {
         if (!email.isRead) acc++;
         return acc
     }, 0);
-    console.log(unreadEmail);
     return Promise.resolve(unreadEmail)
 }
 function getCountReadEmail() {
@@ -107,8 +110,13 @@ function getCountReadEmail() {
         if (email.isRead) acc++;
         return acc
     }, 0);
-    console.log('read mail',readEmail);
     return Promise.resolve(readEmail)
+}
+function getEmailStarres(){
+    console.log('check');
+    let emailsStarres=gEmails.filter((email) => {return email.isstarred} );
+    return Promise.resolve(emailsStarres)
+
 }
 function setEmailRead(emailId) {
     const email = gEmails.findIndex(email => email.id === emailId);

@@ -56,11 +56,11 @@ export class EmailComposeBack extends React.Component {
                 <button onClick={this.props.ontoggleSendEmailBack}>Close</button>
                 <form onSubmit={this.onSendEmail} className="email-compose">
                     <input ref={this.refInput}
-                        placeholder={`To:<${this.props.senderName}@gmail.com>`} type="text" name="senderName" />
+                        placeholder={`To:<${this.props.senderName}@gmail.com>`} type="text" name="senderName"  autoComplete="off"/>
 
                     <input required
                         placeholder="subject:" type="text" name="subject"
-                        onChange={this.onInputChange} />
+                        onChange={this.onInputChange} autoComplete="off" />
                     <textarea name="body" rows="3" cols="80" onChange={this.onInputChange}></textarea>
                     <button type="submit">Send Back</button>
 

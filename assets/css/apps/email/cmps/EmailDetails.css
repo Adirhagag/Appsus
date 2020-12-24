@@ -3,7 +3,7 @@
 } */
 
 .email-deatils {
-    background-color: #eff178;
+    background-color: #f0f5f9;
     width: 50%;
     height: 80vh;
     margin: auto;
@@ -50,4 +50,11 @@ h4 {
 
 input {
     border: 1px solid #555;
+}
+@media (max-width: 650px){
+
+    .email-title {
+        display: flex;
+      flex-wrap: wrap;
+    }
 }

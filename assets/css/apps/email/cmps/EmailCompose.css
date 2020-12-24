@@ -1,35 +1,57 @@
 .email-compose {
-    display: flex;
-    flex-direction: column;
-   
+  display: flex;
+  flex-direction: column;
 }
 
-.email-compose-continer .title-form .btn-close-form{
-  top: 0;
-  border: none;
-  background: none;
+.email-compose-continer h3 {
+  background-color: rgb(68, 68, 68);
+  color: white;
+  padding: 1rem;
+  margin: auto;
+}
 
-  right: 0;
-  padding: 0;
+.email-compose-continer {
+  /* right: 50%; */
+  border: 2px solid;
   position: absolute;
-  
+  bottom: 0;
+  top: 45%;
+  right: 5%;
+  border-radius: 10px;
+  position: absolute;
+}
+
+.email-compose-continer .email-compose-btn .btn-close-form {
+  color: rgb(68, 68, 68);
+  width: 2rem;
+  border: 0;
+  border-radius: 0;
+  font-weight: bold;
+}
+
+.email-compose-btn {
+  justify-content: space-between;
+}
+
+.email-compose-continer .send-mail-btn {
+  background-color: lightskyblue;
+  color: rgb(68, 68, 68);
+  width: 2rem;
+  border: 0;
+  border-radius: 0;
+  font-weight: bold;
+  align-items: center;
+}
+
+.email-compose-continer .email-compose-btn {
+  color: rgb(68, 68, 68);
+  display: flex;
+}
+
+@media (max-width: 650px) {
+  .email-compose-continer {
+    position: fixed;
+    left: 50%;
+    top: 0;
   }
-  .title-form{
-    display:flex;
-    background-color: rgb(68,68,68);
-    color: white;
-    justify-content: space-between;
-    position: relative;
-  }
-  .email-compose-continer{
-        
-        right: 50%;
-        
-        border: 2px solid;
-        position: absolute;
-        bottom: 0;
-  }
-  .email-compose-continer :last-child{
-      margin:auto;
-      color:black;
-  }
+}

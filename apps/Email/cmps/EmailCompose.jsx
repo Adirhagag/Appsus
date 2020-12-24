@@ -41,7 +41,7 @@ export class EmailCompose extends React.Component {
             return;
         }
 
-       
+
         callback()
         callbackToAddEmail();
         // eventBusService.emit('msg', { type: 'success', txt: `Book ${book.volumeInfo.title} was successfully added`,bookToShow:book.id})
@@ -63,21 +63,20 @@ export class EmailCompose extends React.Component {
 
         return (
             <div className="email-compose-continer">
-                <div className="title-form">
-                    <h3>New Messege</h3>
-                    <button className="btn-close-form" onClick={this.props.onCloseFormSendingEmail}><i className="fa fa-times"></i></button>
-                </div>
+                <h3>New Messege</h3>
                 <form onSubmit={this.onSendEmail} className="email-compose">
                     <input ref={this.refInput}
                         placeholder="To:" type="text" name="senderName"
-                        onChange={this.onInputChange} />
+                        onChange={this.onInputChange} autoComplete="off" />
 
                     <input required
                         placeholder="subject:" type="text" name="subject"
-                        onChange={this.onInputChange} />
-                    <textarea name="body" rows="10" cols="80" onChange={this.onInputChange}></textarea>
-                    <button type="submit">Send</button>
-
+                        onChange={this.onInputChange} autoComplete="off" />
+                    <textarea name="body" rows="20" cols="80" onChange={this.onInputChange}></textarea>
+                    <div className="email-compose-btn">
+                        <button className="send-mail-btn" type="submit">Send</button>
+                        <button className="btn-close-form" onClick={this.props.onCloseFormSendingEmail}><i className="fa fa-trash-alt" style={{fontSize:'25px'}}></i></button>
+                    </div>
                 </form>
 
             </div>

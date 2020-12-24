@@ -9,3 +9,8 @@
     /* max-width: 1600px; */
     margin: auto;
 }
+@media (max-width: 650px) {
+    .email-countiner{
+       flex-direction: column;
+    }
+}

@@ -1,18 +1,17 @@
- li .email-preview {
+
+li .email-preview{
+    border: 1px solid rgb(189, 180, 180);
+    padding: 3px;
+    margin-bottom: 1px;
     display: flex;
     justify-content: space-around;
-    padding: 0.5em;
-    border: 1px solid #e1e0e0;
-    align-items: center;
-   /* position: relative; */
-    /* max-height: 100vh; */
-    border-left: 1px solid #616060;
-  
-    /* transition: max-height .8s; */
+     padding: 0.5em;
 }
-/* .email-preview li:hover{
+li .email-preview:hover{
     cursor: pointer;
-} */
+    opacity: 0.8;
+    box-shadow: inset 1px 1px 5px black;
+}
 .email-read{
     background-color: lightgray;
 }

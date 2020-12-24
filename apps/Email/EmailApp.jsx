@@ -58,7 +58,18 @@ export class EmailApp extends React.Component {
     this.loadCountEmailUnread()
     this.loadCountEmailRead();
   }
-
+  onShowStarredEmail=()=>{
+    emailService.getEmailStarres().then(emails=>{
+     this.setState( {emails})
+    })
+  
+  }
+  onShowSentEmail=()=>{
+    console.log('sent email');
+    emailService.getEmailSent().then(emails=>{
+      this.setState( {emails})
+     })
+  }
 
   getEmailsForDisplay() {
     const { filterBy, emails,sortBy } = this.state;
@@ -68,7 +79,6 @@ export class EmailApp extends React.Component {
 
     }
     else if(sortBy.date){
-      console.log('111');
       copyEmails=emailService.sortByDate(copyEmails)
 
     }
@@ -111,7 +121,7 @@ export class EmailApp extends React.Component {
     return (
       <section className="email-app">
         <div className="email-countiner">
-          <EmailStatus countEmailRead={this.state.countEmailRead} emails={emails} onAddEmail={this.onAddEmail} />
+          <EmailStatus countEmailRead={this.state.countEmailRead} emails={emails} onAddEmail={this.onAddEmail} onShowStarredEmail={this.onShowStarredEmail} onShowSentEmail={this.onShowSentEmail} />
           <div className="email-Searh">
             <EmailFilter onSetFilter={this.onSetFilter} onSetSort={this.onSetSort} />
             <EmailList emails={this.getEmailsForDisplay()} onReadEmail={this.onReadEmail} onRemoveEmail={this.onRemoveEmail} countEmailUnread={countEmailUnread} onStarred={this.onStarred} />

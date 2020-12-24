@@ -1,10 +1,12 @@
 import { emailService } from "../services/email-service.js"
 import {EmailComposeBack} from "../cmps/EmailComposeBack.jsx"
 
+
 export class EmailDetails extends React.Component {
     state = {
         email: null,
-        isSendEmailBack:false
+        isSendEmailBack:false,
+        isLongTxtShown: false,
     }
 
     loadBook() {
@@ -42,6 +44,7 @@ export class EmailDetails extends React.Component {
                 <div className="email-details-info">
                 <h1 className="email-subject"> email subject :{email.subject}</h1>
                 {/* <h2 className="sender-name"> email send from:{email.senderName}</h2> */}
+               
                 <h2 className="email-body">{email.body}</h2>
                 <button onClick={ ()=>this.ontoggleSendEmailBack()}>Replay<i className="fa fa-reply"></i></button>
                 </div>

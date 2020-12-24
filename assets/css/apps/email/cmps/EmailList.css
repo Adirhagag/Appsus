@@ -2,8 +2,10 @@
     padding: 0;
 } 
 .email-list .count-unread{
-    right: 100%;
     color: rgb(75, 71, 65);
+    position: fixed;
+    top: 36px;
+    right: 0;
 }
 .email-list{
     flex: 1;

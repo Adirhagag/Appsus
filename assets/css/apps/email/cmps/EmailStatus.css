@@ -1,47 +1,100 @@
 progress[value] {
-    /* Reset the default appearance */
-    -webkit-appearance: none;
-     appearance: none;
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+}
+
+progress[value]::-webkit-progress-value {
+  background-image: -webkit-linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%), -webkit-linear-gradient(top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)), -webkit-linear-gradient(left, rgb(187, 204, 206), rgb(68, 249, 255));
+  border-radius: 2px;
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+.email-status h1 {
+  border-radius: 10%;
+  background-color: #f0f5f9;
+  width: 9rem;
+  padding: 0.2rem;
+  color: #2929246e;
+}
+
+.email-status-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.email-status button {
+  color: #c2c1c1;
+  border: 2px solid #c2c2c2;
+  background-color: #fff;
+  border-radius: 2em;
+  position: relative;
+  line-height: 3em;
+  font-size: 1em;
+  align-self: flex-start;
+  padding: 0 3em;
+  transition: padding .3s;
+  width: 100%;
+}
+
+.email-status {
+  display: flex;
+  flex-direction: column;
+  gap: 10px
+}
+
+.email-status-info button {
+  border-radius: 0;
+  width: 100%;
+}
+.email-status .menu-status{
+  background: none;
+  border: none;
+  display: none;
+}
+.btn-compose-mobile{
+  color: white;
+  background-color: #f0f5f9;
+  padding: 1.5em;
+  border-radius: 50%;
+  position: fixed;
+    bottom: 0;
+    right: 0;
+    display: none;
+
+
+}
+
+@media (max-width: 650px) {
+  .email-status .menu-status{
+    display: block;
   }
-  progress[value]::-webkit-progress-value {
-    background-image:
-         -webkit-linear-gradient(-45deg, 
-                                 transparent 33%, rgba(0, 0, 0, .1) 33%, 
-                                 rgba(0,0, 0, .1) 66%, transparent 66%),
-         -webkit-linear-gradient(top, 
-                                 rgba(255, 255, 255, .25), 
-                                 rgba(0, 0, 0, .25)),
-         -webkit-linear-gradient(left, rgb(199, 186, 110), rgb(255, 236, 68));
-  
-      border-radius: 2px; 
-      background-size: 35px 20px, 100% 100%, 100% 100%;
-  }
-  .email-status h1{
-    border-radius: 10%;
-    background-color: #d6d7804a;
-    width: 9rem;
-    padding: 0.2rem;
-    color: #dfe259;
-  }
-  .email-status-info{
-      display: flex;
-      flex-direction: column;
-      gap: 1em;
+  .email-status{
+    position: fixed;
+    top: 0;
+    max-height: 100vh;
+    border-right: 1px solid #616060;
+    flex-direction: column;
+    transform: translateY( 79px);
+    overflow: hidden;
+    transition: max-height .8s;
+    background-color: rgb(103 99 99 / 90%);
   }
   .email-status button{
-    color: #c2c1c1;
-    border: 2px solid #c2c2c2;
-    background-color: #fff;
-    border-radius: 2em;
-    position: relative;
-    line-height: 3em;
-    font-size: 1em;
-    align-self: flex-start;
-    padding: 0 3em;
-    transition: padding .3s;
-}
-.email-status{
-  display: flex;
-    flex-direction: column;
-    gap:10px
+    border-radius: 0;
+    width: 100%;
+   
+
+  }
+  .email-status .btn-compose{
+   display: none;
+  }
+  .email-status h1 {
+    width: 100%;
+  }
+  .btn-compose-mobile{
+    display: block;
+  }
 }

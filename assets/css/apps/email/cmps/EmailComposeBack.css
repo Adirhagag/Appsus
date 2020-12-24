@@ -1,4 +1,5 @@
-.email-compose-back{
-    position: fixed;
-    bottom: 20%;
-}
+
+    .email-compose-back {
+        bottom: -50%;
+        position: relative;
+    }

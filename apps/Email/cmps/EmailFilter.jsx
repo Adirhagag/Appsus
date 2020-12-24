@@ -42,8 +42,9 @@ export class EmailFilter extends React.Component {
         this.setState({sortBy},callback);
     }
     render() {
-        return <div className="email-filter">
-            <input type="text" placeholder="filter email by text :" name="text" onChange={this.handelChange}  ref={this.refInput}/>
+        return <section className="email-filter">
+            <i className="fa fa-search"></i>
+            <input type="text" placeholder="Search Mail:" name="text" onChange={this.handelChange}  ref={this.refInput} autoComplete="off"/>
             <input type="checkbox"  name="read" id="read" onChange={this.handelChange} ></input>
             < label htmlFor="read">Read</label><br></br>
             <input type="checkbox" name="unread" id="Unread"  onChange={this.handelChange} ></input>
@@ -53,7 +54,7 @@ export class EmailFilter extends React.Component {
                 <option value="date">Sort By Date</option>
                
             </select>
-        </div>
+        </section>
     }
 
     

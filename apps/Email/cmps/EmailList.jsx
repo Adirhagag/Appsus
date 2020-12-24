@@ -6,7 +6,7 @@ export function EmailList({emails,onReadEmail,onRemoveEmail,countEmailUnread,onS
     return (
 
         <div className="email-list">
-            <h1 className="count-unread">(Unread:{countEmailUnread})</h1>
+            <h1 className="count-unread"><i className="fa fa-envelope"></i>:{countEmailUnread}</h1>
             <ul>
            { emails.map(email => {
                
