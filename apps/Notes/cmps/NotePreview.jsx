@@ -1,4 +1,5 @@
 const { Link } = ReactRouterDOM;
+import { noteService } from '../services/note-service.js'
 
 export class NotePreview extends React.Component {
 
@@ -15,7 +16,7 @@ export class NotePreview extends React.Component {
   componentWillUnmount() {
     document.body.classList.remove('stop-body-events')
   }
-  
+
 
   checkNoteType = () => {
     const { type } = this.state.note;
@@ -42,6 +43,12 @@ export class NotePreview extends React.Component {
     this.props.backToNoteApp();
   }
 
+  onRemoveNote = (noteId) => {
+    noteService.remove(noteId);
+    this.onClosePreview()
+    this.props.loadNotes();
+  }
+
   render() {
     const { note } = this.state;
     return (
@@ -50,6 +57,7 @@ export class NotePreview extends React.Component {
         {this.state.skeletonType === 'NoteTxt' && <div>
           <p>{note.info.txt}</p>
           <Link to={`/note/edit/${note.id}`}>Edit me</Link>
+          <button onClick={() => this.onRemoveNote(note.id)} className="delete-btn">Delete</button>
         </div>}
 
         {this.state.skeletonType === 'NoteImg' && <div className="note-img-wrapper">
@@ -58,6 +66,7 @@ export class NotePreview extends React.Component {
             <img src={note.info.url} />
           </div>
           <Link to={`/note/edit/${note.id}`}>Edit me</Link>
+          <button onClick={() => this.onRemoveNote(note.id)} className="delete-btn">Delete</button>
         </div>}
 
         {this.state.skeletonType === 'NoteVideo' && <div className="full-video-info">
@@ -67,6 +76,7 @@ export class NotePreview extends React.Component {
             </iframe>
           </div>
           <Link to={`/note/edit/${note.id}`}>Edit me</Link>
+          <button onClick={() => this.onRemoveNote(note.id)} className="delete-btn">Delete</button>
         </div>}
 
         {this.state.skeletonType === 'NoteTodos' && <div>
@@ -76,6 +86,7 @@ export class NotePreview extends React.Component {
               className={(!todo.isMarked) ? '' : 'done'} >{todo.txt}</li>)}
           </ul>
           <Link to={`/note/edit/${note.id}`}>Edit me</Link>
+          <button onClick={() => this.onRemoveNote(note.id)} className="delete-btn">Delete</button>
         </div>}
       </div >
     )

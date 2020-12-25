@@ -11,6 +11,10 @@ export function NoteImg({ isClickable = true, activePreview, info, isPinned, sty
       <div className="img-wrapper">
         <img src={info.url} />
       </div>
+
+      <div className="img-input-wrapper">
+        <input className="color-input" name="color-input" type="color" />
+      </div>
     </article>
   )
 }

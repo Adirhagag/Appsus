@@ -27,7 +27,7 @@
 .note-preview .note-img-wrapper {
   display: flex;
   flex-direction: column;
-  height: 80%;
+  height: 60%;
 }
 
 .note-preview .img-wrapper{
@@ -43,7 +43,7 @@
 
 
 .note-preview .full-video-info {
-  height: 80%;
+  height: 60%;
 }
 
 .note-preview iframe {
@@ -61,9 +61,21 @@
   margin-bottom: 0px;
 }
 
-.note-preview a {
+.note-preview a,
+.note-preview .delete-btn {
   background-color: rgb(68, 68, 68);
-  padding: 0.4rem;
   color: white;
   border-radius: 0.4rem;
+  font-size: 1.9rem;
+}
+
+.note-preview a {
+  padding: 0.4rem 20%;
+  line-height: 3.5rem;
+}
+
+.note-preview .delete-btn { 
+  background-color: red;
+  margin-top: 5px;
+  padding: 0.4rem 20%;
 }

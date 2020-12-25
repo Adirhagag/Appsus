@@ -69,14 +69,15 @@ export class AddNoteInput extends React.Component {
   }
 
   handleTodoAdd = (ev) => {
-    let words = noteService.getConvertedTodos(ev.target.value);
+    const { value } = ev.target;
+    let words = noteService.getConvertedTodos(value);
     let noteCopy = this.state.note;
 
     let readyTodos = words.map((word) => {
       return { txt: `${word}`, doneAt: null, isMarked: false }
     });
 
-    noteCopy.info = { todos: readyTodos }
+    noteCopy.info = { todos: readyTodos, todosStr: value }
     this.setState({ note: noteCopy })
     this.addInput('todo')
   }

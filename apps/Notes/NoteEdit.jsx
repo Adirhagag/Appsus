@@ -8,27 +8,15 @@ export class NoteEdit extends React.Component {
 
   state = {
     note: null,
-    isAddInput: false,
-    todosStr: ''
+    isAddInput: false
+    // todosStr: ''
   }
 
   componentDidMount() {
     const { noteId } = this.props.match.params;
     if (!noteId) return;
     noteService.getNoteById(noteId)
-      .then((note) => {
-        if (note.type === 'NoteTodos') {
-          const todosStr = this.getTodosStr(note);
-          this.setState({ note, todosStr }) // continue from input val strTodos
-          return
-        }
-
-        this.setState({ note })
-      })
-  }
-
-  getTodosStr = (note) => {
-    return noteService.todosToStr(note);
+      .then((note) => this.setState({ note }))
   }
 
   onMainInputChange = (ev) => {
@@ -37,10 +25,7 @@ export class NoteEdit extends React.Component {
 
     if (copy.type === 'NoteTxt') copy.info.txt = value;
     else if (copy.type === 'NoteImg' || copy.type === 'NoteVideo') copy.info.url = value;
-    else if (copy.type === 'NoteTodos') {
-      this.setState({ note: copy, todosStr: value })
-      return
-    };
+    else if (copy.type === 'NoteTodos') copy = this.handleTodosUpdate(value, copy);
 
     this.setState({ note: copy })
   }
@@ -56,7 +41,7 @@ export class NoteEdit extends React.Component {
   onKeySubmitMain = (ev) => {
     if (ev.key !== 'Enter') return;
     const { type } = this.state.note;
-    if (type === 'NoteImg' || type === 'NoteVideo' && !this.state.isAddInput) {
+    if (type !== 'NoteTxt'  && !this.state.isAddInput) {
       this.setState({ isAddInput: true })
       return;
     }
@@ -79,6 +64,15 @@ export class NoteEdit extends React.Component {
     // user msg when components will merge
   }
 
+  handleTodosUpdate = (value, copy) => {
+    let words = noteService.getConvertedTodos(value);
+    let readyTodos = words.map((word) => {
+      return { txt: `${word}`, doneAt: null, isMarked: false }
+    });
+    copy.info = { todos: readyTodos, todosStr: value, title: copy.info.title }
+    return copy;
+  }
+
 
 
   render() {
@@ -88,10 +82,13 @@ export class NoteEdit extends React.Component {
       <section className="note-edit">
         <input type="text" className="main-input" onChange={this.onMainInputChange}
           onKeyDown={this.onKeySubmitMain} autoFocus
-          value={(note.type === 'NoteTxt') ? note.info.txt : note.info.url} />
+          value={(note.type === 'NoteTxt') ? note.info.txt :
+            (note.type === 'NoteTodos') ? note.info.todosStr : note.info.url} />
 
         {this.state.isAddInput && <input autoFocus type="text" value={note.info.title}
           onChange={this.onSecInputChange} onKeyDown={this.onKeySubmitSec} />}
+        
+        <button onClick={this.saveChanges} className="save">Save Changes</button>
 
         {note.type === 'NoteTxt' && <NoteTxt isClickable={false} info={note.info}
           isPinned={note.isPinned} style={note.style} id={note.id} />}

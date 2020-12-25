@@ -11,11 +11,12 @@
 
 .note-app main {
   margin-top: 8rem;
+  margin-inline-start: 3rem;
   text-align: left;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
   grid-template-rows: repeat(auto-fit, minmax(250px, 300px));
-  gap: 6rem;
+  gap: 3rem;
 }
 
 .note-app .main-input {

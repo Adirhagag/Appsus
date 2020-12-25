@@ -1,16 +1,27 @@
 import { utilService } from '../../../services/utils.js'
+import { storageService } from '../../../services/storage-service.js'
 
+const NOTES_KEY = 'notesDB';
 export const noteService = {
   qurey,
   addNoteToList,
   getConvertedTodos,
   getNoteById,
   updateNote,
-  todosToStr
+  remove
 }
 
 
-let gNotes = _getDemoNotes();
+let gNotes;
+_createNotes();
+
+function _createNotes() {
+  gNotes = storageService.load(NOTES_KEY);
+  if (!gNotes || !gNotes.length) {
+    gNotes = _getDemoNotes();
+    _saveNotesToStorage();
+  }
+}
 
 function qurey() {
   return Promise.resolve(gNotes);
@@ -21,19 +32,18 @@ function addNoteToList(note) {
   note.id = utilService.makeId();
   notesCopy.unshift(note)
   gNotes = notesCopy
+  _saveNotesToStorage();
 }
 
 function updateNote(note) {
-  console.log('gNotes before', gNotes)
   const noteToUpdate = {
     ...note
   };
-  console.log(noteToUpdate);
   const notesCopy = [...gNotes];
   const noteIdx = notesCopy.findIndex(note => note.id === note.id);
   notesCopy[noteIdx] = noteToUpdate;
   gNotes = notesCopy;
-  console.log('gNotes after', gNotes)
+  _saveNotesToStorage();
   return Promise.resolve(noteToUpdate);
 }
 
@@ -42,22 +52,34 @@ function getConvertedTodos(commaSepList) {
   return words;
 }
 
-function todosToStr(note) {
-  let todosStr = ''
-  note.info.todos.forEach((todo) => {
-    todosStr += `${todo.txt}, `
-  })
-  return todosStr;
-}
+// function todosToStr(note) { // also not imported if will use
+//   let todosStr = ''
+//   note.info.todos.forEach((todo) => {
+//     todosStr += `${todo.txt}, `
+//   })
+//   return todosStr;
+// }
 
 function getNoteById(id) {
   const note = gNotes.find((note) => note.id === id)
   return Promise.resolve(note);
-  // return gNotes.find((note) => note.id === id)
+}
+
+function remove(noteId) {
+  console.log(noteId)
+  let notesCopy = gNotes;
+  notesCopy = notesCopy.filter(note => note.id !== noteId);
+  gNotes = notesCopy
+  _saveNotesToStorage()
+  return Promise.resolve();
+}
+
+function _saveNotesToStorage() {
+  storageService.save(NOTES_KEY, gNotes);
 }
 
 function _getDemoNotes() {
-  let notes = [{
+  const notes = [{
     type: 'NoteTxt',
     id: utilService.makeId(),
     isPinned: false,
@@ -85,6 +107,7 @@ function _getDemoNotes() {
     isPinned: false,
     info: {
       title: 'How was it:',
+      todosStr: 'Do that, Do this',
       todos: [
         { txt: 'Do that', doneAt: null, isMarked: false },
         { txt: 'Do this', doneAt: 187111111, isMarked: false }

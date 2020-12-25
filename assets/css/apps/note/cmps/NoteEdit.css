@@ -8,3 +8,13 @@
   height: 100%;
 }
 
+.note-edit .main-input,
+.note-edit .save {
+  height: 3rem;
+  font-size: 1.5rem;
+}
+
+.note-edit .save {
+  background-color: rgb(68, 68, 68);
+  color: #fff;
+}
