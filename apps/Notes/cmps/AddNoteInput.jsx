@@ -119,7 +119,7 @@ export class AddNoteInput extends React.Component {
     }
     let copy = this.state.note;
     copy.type = type;
-    this.setState({ placeHolder, note: copy }, () => console.log('copy', copy))
+    this.setState({ placeHolder, note: copy })
     this.mainInputRef.current.focus();
   }
 
@@ -127,7 +127,7 @@ export class AddNoteInput extends React.Component {
     return (
       <div className="input-container">
         <div className="input-imgs">
-          <img src="./assets/img/a.png" onClick={() => this.onImgClick('NoteTxt')} alt="" />
+          <img src="./assets/img/a.png" onClick={() => this.onImgClick('NoteTxt')} />
           <img src="./assets/img/list.png" onClick={() => this.onImgClick('NoteTodos')} />
           <img src="./assets/img/picture.png" onClick={() => this.onImgClick('NoteImg')} />
           <img src="./assets/img/video.png" onClick={() => this.onImgClick('NoteVideo')} />

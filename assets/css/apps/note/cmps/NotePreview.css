@@ -25,19 +25,22 @@
 }
 
 .note-preview .note-img-wrapper {
+  display: flex;
+  flex-direction: column;
   height: 80%;
-}
-
-.note-preview img{
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
 }
 
 .note-preview .img-wrapper{
   margin-top: 0.5rem;
   height: 100%;
 }
+
+.note-preview img{
+  width: 100%;
+  height: 90%;
+  object-fit: contain;
+}
+
 
 .note-preview .full-video-info {
   height: 80%;
@@ -56,4 +59,11 @@
 
 .note-preview .edit-btn {
   margin-bottom: 0px;
+}
+
+.note-preview a {
+  background-color: rgb(68, 68, 68);
+  padding: 0.4rem;
+  color: white;
+  border-radius: 0.4rem;
 }

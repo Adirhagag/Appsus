@@ -3,6 +3,7 @@
 @import './cmps/NoteTodos.css';
 @import './cmps/NoteTxt.css';
 @import './cmps/NotePreview.css';
+@import './cmps/NoteEdit.css';
 
 .note-app {
   text-align: center;

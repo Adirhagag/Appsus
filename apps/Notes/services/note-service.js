@@ -4,7 +4,9 @@ export const noteService = {
   qurey,
   addNoteToList,
   getConvertedTodos,
-  getNoteById
+  getNoteById,
+  updateNote,
+  todosToStr
 }
 
 
@@ -21,13 +23,36 @@ function addNoteToList(note) {
   gNotes = notesCopy
 }
 
+function updateNote(note) {
+  console.log('gNotes before', gNotes)
+  const noteToUpdate = {
+    ...note
+  };
+  console.log(noteToUpdate);
+  const notesCopy = [...gNotes];
+  const noteIdx = notesCopy.findIndex(note => note.id === note.id);
+  notesCopy[noteIdx] = noteToUpdate;
+  gNotes = notesCopy;
+  console.log('gNotes after', gNotes)
+  return Promise.resolve(noteToUpdate);
+}
+
 function getConvertedTodos(commaSepList) {
   let words = commaSepList.split(',');
   return words;
 }
 
+function todosToStr(note) {
+  let todosStr = ''
+  note.info.todos.forEach((todo) => {
+    todosStr += `${todo.txt}, `
+  })
+  return todosStr;
+}
+
 function getNoteById(id) {
-  return gNotes.find((note) => note.id === id)
+  const note = gNotes.find((note) => note.id === id)
+  return Promise.resolve(note);
   // return gNotes.find((note) => note.id === id)
 }
 

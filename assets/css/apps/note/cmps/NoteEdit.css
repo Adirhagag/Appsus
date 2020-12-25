@@ -1,0 +1,10 @@
+.note-edit {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.note-edit article {
+  height: 100%;
+}
+

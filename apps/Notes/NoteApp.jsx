@@ -2,7 +2,7 @@ import { noteService } from './services/note-service.js'
 import { NoteList } from './cmps/NoteList.jsx'
 import { utilService } from '../../services/utils.js'
 import { AddNoteInput } from './cmps/AddNoteInput.jsx'
-import { NotePreview } from './NotePreview.jsx'
+import { NotePreview } from './cmps/NotePreview.jsx'
 const { Link } = ReactRouterDOM;
 
 export class NoteApp extends React.Component {
@@ -24,8 +24,8 @@ export class NoteApp extends React.Component {
   }
 
   previewActive = (id) => {
-    const noteToShow = noteService.getNoteById(id);
-    this.setState({ noteClicked: true, noteToShow })
+    noteService.getNoteById(id)
+      .then((note) => this.setState({ noteClicked: true, noteToShow: note }))
   }
 
   backToNoteApp = () => {

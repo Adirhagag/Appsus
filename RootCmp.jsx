@@ -4,6 +4,7 @@ import { Home } from './pages/Home.jsx'
 import { AppHeader } from './cmps/AppHeader.jsx'
 import {EmailDetails} from './apps/Email/cmps/EmailDetails.jsx'
 import { EmailCompose } from './apps/Email/cmps/EmailCompose.jsx'
+import { NoteEdit } from './apps/Notes/NoteEdit.jsx'
 // const { Link } = ReactRouterDOM;
 
 
@@ -22,6 +23,7 @@ export class RootCmp extends React.Component {
             {/* <Route path="/book" component={BookApp} /> */}
             <Route path="/email/:emailId" component={EmailDetails} />
             <Route path="/emailCompose" component={EmailCompose} />
+            <Route path="/note/edit/:noteId" component={NoteEdit} />
             <Route path="/email" component={EmailApp} />
             <Route path="/note" component={NoteApp} />
             <Route path="/" component={Home} />
