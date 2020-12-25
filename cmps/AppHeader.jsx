@@ -1,36 +1,38 @@
-const { NavLink, withRouter } = ReactRouterDOM;
+ const { NavLink } = ReactRouterDOM;
 
 
-function _AppHeader(props) {
 
-    // function goToMuki() {
-    //     props.history.push('/pet/i102');
-    // }
+export class AppHeader extends React.Component {
 
-    return <header className="main-header">
+    state = {
+        isShowMenuHeader: true
+    }
+    onToggleMenuHeader = () => {
+        this.setState({ isShowMenuHeader: !this.state.isShowMenuHeader }, () => console.log(this.state))
 
-        <h1 className="logo">🌓 Apps Place</h1>
+    }
 
-        <div>
-        <input type="text" />
-        <select name="filter">
-            <option value="1">opt1</option>
-            <option value="2">opt2</option>
-            <option value="3">opt3</option>
-        </select>
-        </div>
+    render() {
 
-        <ul className="main-nav">
-            <li><NavLink activeClassName="my-active" exact to="/"><i className="fas fa-home">Home</i></NavLink></li>
-            <li><NavLink exact to="/email"><i className="fas fa-envelope">Email</i></NavLink></li>
-            <li><NavLink exact to="/note"> <i className="fas fa-pager"></i>Note</NavLink></li>
-            
-        </ul>
-        
-    </header>;
+        return (
+            <header className="main-header">
+
+                <h1 className="logo"><img src="../assets/img/appsus.png" />Appsus</h1>
+                <button className="memu-header" onClick={this.onToggleMenuHeader} ><i className="fa fa-th-large"></i></button>
+                <ul className={`main-nav ${!this.state.isShowMenuHeader ? 'hide' : ''}`}>
+                    <li><NavLink activeClassName="my-active" exact to="/"><i className="fas fa-home">Home</i></NavLink></li>
+                    <li><NavLink exact to="/email"><i className="fas fa-envelope">Email</i></NavLink></li>
+                    <li><NavLink exact to="/note"> <i className="fas fa-pager"></i>Note</NavLink></li>
+
+                </ul>
+
+            </header>
+        )
+    }
+
 }
 
 //HOC - higher order component
-export const AppHeader = withRouter(_AppHeader);
+// export const AppHeader = withRouter(_AppHeader);
 
-{/* <i class="fas fa-book-open"></i> */}
+{/* <i class="fas fa-book-open"></i> */ }

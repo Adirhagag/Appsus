@@ -3,80 +3,91 @@ import { storageService } from "../../../services/storage-service.js";
 export const emailService = {
     query,
     getEmailById,
-    save,
     removeEmail,
     setEmailRead,
     doConfirm,
     getCountUnreadEmail,
     sortByTitle,
-     getCountReadEmail,
-     addEmail,
-     sortByDate,
-     setEmailStarres,
-     getEmailStarres,
-     getEmailSent
+    getCountReadEmail,
+    addEmail,
+    sortByDate,
+    setEmailStarres,
+    getEmailStarres,
+    getEmailSent,
+    getIconsForDisplay,
+    getEmailsForFilter
 };
 const EMAIL_KEY = 'emailDB'
 
 
 var gEmails;
-var emailsSent=[];
+var emailsSent = [];
 _createEmails();
+var gIcons = [
+[ '😉 ','😌 ','😍','🥰','😘','😝','😁','🤣','😇'],
+[ '🤓 ','😎 ','🤩','🥳','😩', '🤬', '🤯','🥶','😱'],
+[ '🤠 ','😈 ','💩','☠️','👆','👍','👊','🙏','💅'],
+[ '👶 ','👧 ','🧒','👵','🧓','👮‍♂️','🕵️‍♀️','👩‍🎓','👩‍❤️‍💋‍👨'],
+[ '☂️ ','👓 ','👙','👑','👒','🎩','💍','💼','🎅🏻'],
+[ '🐒 ','🐶 ','🐱','🐭','🐔','🦄','🐝','🐌','🐞'],
+[ '🛒' ,'🎁' ,'🎈','📧','💣','💰','🛁','🚽','💻'],
+['❤️' ,'🧡' ,'💛', '💚','💙','💜','🖤','🤍','💔']
+  
 
+]
+ 
+
+
+
+function getIconsForDisplay() {
+    // console.log(Promise.resolve(gIcons))
+    return Promise.resolve(gIcons)
+}
 
 window.theEmails = gEmails;
 
 function query() {
     return Promise.resolve(gEmails);
 }
-function addEmail(emailToAdd){
-     gEmails=[emailToAdd,...gEmails];
-     emailsSent.push(emailToAdd)
+function getEmailsForFilter(){
+    return gEmails;
+}
+function addEmail(emailToAdd) {
+    gEmails = [emailToAdd, ...gEmails];
+    emailsSent.push(emailToAdd)
     _saveTostorage();
 }
-function getEmailSent(){
+function getEmailSent() {
     return Promise.resolve(emailsSent);
 }
 function getEmailById(emailId) {
     const email = gEmails.find(email => email.id === emailId);
     return Promise.resolve(email);
-    
+
 }
-function sortByTitle(emailsToSort){
-   emailsToSort= emailsToSort.sort((email1,email2)=>{
-        if(email1.subject.toLowerCase()>email2.subject.toLowerCase()) return 1
-        else if (email1.subject.toLowerCase()  < email2.subject.toLowerCase() ) return -1;
+function sortByTitle(emailsToSort) {
+    emailsToSort = emailsToSort.sort((email1, email2) => {
+        if (email1.subject.toLowerCase() > email2.subject.toLowerCase()) return 1
+        else if (email1.subject.toLowerCase() < email2.subject.toLowerCase()) return -1;
         else return 0;
     })
     return emailsToSort
 }
-function sortByDate(emailsToSort){
-    emailsToSort=emailsToSort.sort((email1,email2)=> {
+function sortByDate(emailsToSort) {
+    emailsToSort = emailsToSort.sort((email1, email2) => {
         return email2.sentAt - email1.sentAt
     })
-    return  emailsToSort
+    return emailsToSort
 }
 
-function save(book, review) {
-    var bookId = book.id;
-    const reviewToAdd = {
-        ...review,
-    };
-    const booksCopy = [...gEmails];
-    const bookIdx = gEmails.findIndex(book => book.id === bookId)
-    if (booksCopy[bookIdx].reviews) booksCopy[bookIdx].reviews = [reviewToAdd, ...book.reviews]
-    else booksCopy[bookIdx].reviews = [reviewToAdd]
-    gEmails = booksCopy;
-    _saveTostorage()
-    return Promise.resolve(booksCopy[bookIdx])
-}
+
 
 function _createEmails() {
     var emailsFromStorage = storageService.load(EMAIL_KEY)
     if (!emailsFromStorage || !emailsFromStorage.length) {
         emailsFromStorage = [
-            { id: 'hgroo', senderName: 'yeal', subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594,isstarred:false},
-            { id: 'dbhfek', senderName: 'adir', subject: 'hi?', body: 'hello long time no see!', isRead: true, sentAt: 1551133930594,isstarred:false },
+            { id: 'hgroo', senderName: 'yeal', subject: 'Wassap?', body: 'Pick up!', isRead: false, sentAt: 1551133930594, isstarred: false },
+            { id: 'dbhfek', senderName: 'adir', subject: 'hi?', body: 'hello long time no see!', isRead: true, sentAt: 1551133930594, isstarred: false },
 
         ]
 
@@ -112,9 +123,9 @@ function getCountReadEmail() {
     }, 0);
     return Promise.resolve(readEmail)
 }
-function getEmailStarres(){
+function getEmailStarres() {
     console.log('check');
-    let emailsStarres=gEmails.filter((email) => {return email.isstarred} );
+    let emailsStarres = gEmails.filter((email) => { return email.isstarred });
     return Promise.resolve(emailsStarres)
 
 }
@@ -124,9 +135,9 @@ function setEmailRead(emailId) {
     copyEmails[email].isRead = !copyEmails[email].isRead
     gEmails = copyEmails;
     _saveTostorage();
-    
+
 }
-function setEmailStarres(emailId){
+function setEmailStarres(emailId) {
     const email = gEmails.findIndex(email => email.id === emailId);
     const copyEmails = [...gEmails]
     copyEmails[email].isstarred = !copyEmails[email].isstarred
@@ -139,7 +150,7 @@ function doConfirm(msg) {
         keepResolve = resolve;
     });
     return prm;
-   
+
 }
 
 

@@ -1,5 +1,7 @@
 import { utilService } from "../../../services/utils.js";
 import { emailService } from "../services/email-service.js";
+import {EmailEmoji} from "./EmailEmoji.jsx"
+
 
 export class EmailCompose extends React.Component {
 
@@ -10,22 +12,14 @@ export class EmailCompose extends React.Component {
             subject: null,
             body: '',
             isRead: false,
-            sentAt: Date.now()
-        }
+            sentAt: Date.now(),
+            isstarred:false,
+            img:''
+        },
+        isShowTableIcon:false
     };
 
     refInput = React.createRef();
-
-    // componentDidMount() {
-    //     const { petId } = this.props.match.params;
-    //     // console.log('this.elInput:', this.elInput);
-    //     this.refInput.current.focus();
-    //     if (!petId) return;
-    //     petService.getById(petId).then(pet => {
-    //         this.setState({ pet });
-    //     });
-    // }
-
 
     onSendEmail = (ev) => {//on submit
         ev.preventDefault();
@@ -56,8 +50,17 @@ export class EmailCompose extends React.Component {
             email
         });
     };
-
-
+    onToggleShowIcons =()=>{
+        this.setState({
+            isShowTableIcon:!this.state.isShowTableIcon
+        })
+    }
+    onAddEmoji=(emojiToadd)=>{
+        const email = { ...this.state.email };
+        email['body']+=emojiToadd
+        this.setState({ email});
+    }
+ 
 
     render() {
 
@@ -72,12 +75,15 @@ export class EmailCompose extends React.Component {
                     <input required
                         placeholder="subject:" type="text" name="subject"
                         onChange={this.onInputChange} autoComplete="off" />
-                    <textarea name="body" rows="20" cols="80" onChange={this.onInputChange}></textarea>
-                    <div className="email-compose-btn">
+                    <textarea value={this.state.email.body} name="body" rows="10" cols="80" onChange={this.onInputChange}></textarea>
                         <button className="send-mail-btn" type="submit">Send</button>
-                        <button className="btn-close-form" onClick={this.props.onCloseFormSendingEmail}><i className="fa fa-trash-alt" style={{fontSize:'25px'}}></i></button>
-                    </div>
                 </form>
+                    <div className="email-compose-btn">
+                        <button className="btn-close-form" onClick={this.props.onCloseFormSendingEmail}><i className="fa fa-trash-alt" style={{fontSize:'25px'}}></i></button>
+                        <button  className="btn-emoji" onClick={this.onToggleShowIcons}><i className="fa fa-smile-beam" style={{ color: 'rgb(68, 68, 68)',fontSize:'25px'}}></i></button>
+                        {/* <button  type="file" name="image" onClick={ this.onImgInput} className="btn-add-pic" ><i className="fa fa-image" style={{ color: 'rgb(68, 68, 68)',fontSize:'25px'}}></i></button> */}
+                    </div>
+                {this.state.isShowTableIcon&&<EmailEmoji  onAddEmoji={this.onAddEmoji}/>}
 
             </div>
         );

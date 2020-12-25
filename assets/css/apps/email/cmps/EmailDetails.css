@@ -51,6 +51,9 @@ h4 {
 input {
     border: 1px solid #555;
 }
+.email-deatils h4{
+    color:#5378e7;
+}
 @media (max-width: 650px){
 
     .email-title {
