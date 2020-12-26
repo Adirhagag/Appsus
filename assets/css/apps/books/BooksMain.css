@@ -1,3 +1,5 @@
 @import './cmps/BookList.css';
 @import './cmps/BookDetails.css';
 @import './cmps/BookFilter.css';
+@import './cmps/BookReviewAdd.css';
+@import './cmps/BookReviewDetails.css';

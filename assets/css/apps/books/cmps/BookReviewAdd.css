@@ -1,0 +1,40 @@
+.book-review-add button{
+    width: 5%;
+}
+.book-review-add-input{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.book-review-add{
+    border: 2px solid;
+    padding: 0.5em;
+    /* position: fixed; */
+    width: 100%;
+}
+.book-review-info{
+    display: flex;
+    flex-direction: column; 
+    margin-bottom: 10px;
+    
+}
+.book-review-add .book-review-info .btn-submit{
+    width: 20%;
+    height: 41px;
+    border: solid;
+    background-color: gray;
+    border-radius: 0;
+    box-shadow: 0;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-review-add form .btn-rate{
+    width: 10%;
+    box-shadow: none; 
+     border-radius:0; 
+    background-color: #8a8a8a;
+     padding: 0;
+}

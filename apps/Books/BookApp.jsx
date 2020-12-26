@@ -2,6 +2,7 @@
 import { bookService } from "./services/book-service.js";
 import { BookList } from "./cmps/BookList.jsx";
 import {BookFilter} from "./cmps/BookFilter.jsx"
+import { eventBusService } from "../../services/eventBusService.js";
 
 export class BookApp extends React.Component {
 
@@ -29,25 +30,11 @@ export class BookApp extends React.Component {
         return books;
     }
     onRemoveBook = (bookId) => {
-        bookService.remove(bookId).then(() => {
+        bookService.removeBook(bookId).then(() => {
             this.loadBooks()
         })
+        eventBusService.emit('showMsg', { type: 'success', txt: `Book was successfully remove`})
     }
-
-    // getBookForDisplay = () => {
-    //     const { filterBy } = this.state;
-    //     //Another way of doing filter
-    //     // const filterRegex = new RegExp(filterBy.name,'i');
-    //     // return this.state.pets.filter(pet=> filterRegex.test(pet.name));
-
-    //     return this.state.books.filter(book => {
-
-    //         return book.title.toLowerCase().includes(filterBy.title.toLowerCase());
-    //     }).filter(book => {
-    //         return book.listPrice.amount >= filterBy.fromPrice && book.listPrice.amount <= filterBy.toPrice
-    //     })
-    
-    // };
     getBookForDisplay = () => {
         const { filterBy } = this.state;
 
