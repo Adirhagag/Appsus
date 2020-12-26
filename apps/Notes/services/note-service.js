@@ -122,7 +122,7 @@ function _getDemoNotes() {
     id: utilService.makeId(),
     isPinned: false,
     info: {
-      url: 'https://www.youtube.com/embed/vmAaVgUzNh8',
+      url: 'https://www.youtube.com/watch?v=Fo-qNzexDWE',
       title: 'speacial title'
     },
     style: {

@@ -15,8 +15,10 @@ export class NoteTodos extends React.Component {
 
   render() {
     const { info } = this.props;
+    let isActivePreview = this.props.isClickable; // check it
     return (
-      <article onClick={() => this.props.activePreview(this.props.id)} className="note-todos" style={{ backgroundColor: this.props.style.backgroundColor }}>
+      <article onClick={() => isActivePreview ? activePreview(id) : () => false}
+        className="note-todos" style={{ backgroundColor: this.props.style.backgroundColor }}>
         <h1>{info.title}</h1>
 
         <ul>

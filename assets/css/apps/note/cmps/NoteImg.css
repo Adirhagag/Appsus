@@ -8,21 +8,3 @@
   margin-top: 0.5rem;
   height: 80%;
 }
-
-.note-app .color-input {
-  /* opacity: 0; */
-  border: none;
-  background-color: transparent;
-  outline: none;
-  padding: 0px;
-}
-
-/* .img-input-wrapper {
-  height: 10%;
-}
-
-.img-input-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-} */

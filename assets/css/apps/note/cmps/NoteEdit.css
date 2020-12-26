@@ -18,3 +18,18 @@
   background-color: rgb(68, 68, 68);
   color: #fff;
 }
+
+.note-edit .color-input {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  padding: 0px;
+  width: 3rem;
+  height: 3rem;
+}
+
+.input-wrapper .color-input {
+  position: fixed;
+  left: 0.5rem;
+  bottom: 0.5rem;
+}

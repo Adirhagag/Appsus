@@ -41,7 +41,7 @@ export class NoteEdit extends React.Component {
   onKeySubmitMain = (ev) => {
     if (ev.key !== 'Enter') return;
     const { type } = this.state.note;
-    if (type !== 'NoteTxt'  && !this.state.isAddInput) {
+    if (type !== 'NoteTxt' && !this.state.isAddInput) {
       this.setState({ isAddInput: true })
       return;
     }
@@ -52,6 +52,14 @@ export class NoteEdit extends React.Component {
   onKeySubmitSec = (ev) => {
     if (ev.key !== 'Enter') return;
     this.saveChanges();
+  }
+
+  onColorInputChange = (ev) => {
+    const {value} = ev.target;
+    const noteCopy = this.state.note;
+    noteCopy.style.backgroundColor = value;
+
+    this.setState({note: noteCopy})
   }
 
   saveChanges = () => {
@@ -74,7 +82,6 @@ export class NoteEdit extends React.Component {
   }
 
 
-
   render() {
     if (!this.state.note) return ''; // ask about it
     const { note } = this.state;
@@ -87,8 +94,13 @@ export class NoteEdit extends React.Component {
 
         {this.state.isAddInput && <input autoFocus type="text" value={note.info.title}
           onChange={this.onSecInputChange} onKeyDown={this.onKeySubmitSec} />}
-        
+
         <button onClick={this.saveChanges} className="save">Save Changes</button>
+
+        <div className="input-wrapper">
+          <input className="color-input" name="color-input" type="color"
+            onChange={this.onColorInputChange} value={note.style.backgroundColor}/>
+        </div>
 
         {note.type === 'NoteTxt' && <NoteTxt isClickable={false} info={note.info}
           isPinned={note.isPinned} style={note.style} id={note.id} />}
