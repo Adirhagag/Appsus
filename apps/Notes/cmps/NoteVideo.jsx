@@ -1,6 +1,6 @@
+import { noteService } from '../services/note-service.js'
 
-
-export function NoteVideo({ isClickable = true, activePreview, info, isPinned, style, id }) {
+export function NoteVideo({ isClickable = true, activePreview, info, isPinned, style, id, loadNotes }) {
   // check the embed thing
 
   let isActivePreview = isClickable;
@@ -12,10 +12,17 @@ export function NoteVideo({ isClickable = true, activePreview, info, isPinned, s
     return embeddedUrl;
   }
 
+  function onPinNote(ev, id) {
+    ev.stopPropagation();
+    noteService.pinNote(id);
+    loadNotes();
+    isPinned = true;
+  }
+
   return (
     <article onClick={() => isActivePreview ? activePreview(id) : () => false}
       className="note-video" style={{ backgroundColor: style.backgroundColor }}>
-      <h1>{info.title}</h1>
+      <h1><button className="pin-btn" onClick={(event) => onPinNote(event ,id)}>📌</button>{info.title}</h1>
 
       <div className="video-container">
         <iframe width="420" height="345" src={myFunction()}>

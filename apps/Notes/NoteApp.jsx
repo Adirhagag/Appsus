@@ -62,7 +62,7 @@ export class NoteApp extends React.Component {
         <main className="note-to-show">
           {notesForDisplay.map((note) =>
             <NoteList key={utilService.makeId()} currCmp={note.type} info={note.info} isPinned={note.isPinned}
-              style={note.style} id={note.id} activePreview={this.previewActive} />
+              style={note.style} id={note.id} activePreview={this.previewActive} loadNotes={this.loadNotes}/>
           )}
         </main>
 

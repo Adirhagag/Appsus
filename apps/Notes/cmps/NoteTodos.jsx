@@ -1,4 +1,4 @@
-
+import { noteService } from '../services/note-service.js'
 
 export class NoteTodos extends React.Component {
 
@@ -13,13 +13,20 @@ export class NoteTodos extends React.Component {
     this.setState({ todos: copy })
   }
 
+  onPinNote = (ev, id) => {
+    ev.stopPropagation();
+    noteService.pinNote(id);
+    this.props.loadNotes();
+    this.props.isPinned = true;
+  }
+
   render() {
     const { info } = this.props;
-    let isActivePreview = this.props.isClickable; // check it
+    let isActivePreview = true; // check it
     return (
-      <article onClick={() => isActivePreview ? activePreview(id) : () => false}
+      <article onClick={() => isActivePreview ? this.props.activePreview(this.props.id) : () => false}
         className="note-todos" style={{ backgroundColor: this.props.style.backgroundColor }}>
-        <h1>{info.title}</h1>
+        <h1><button className="pin-btn" onClick={(event) => this.onPinNote(event ,this.props.id)}>📌</button>{info.title}</h1>
 
         <ul>
           {info.todos.map((todo, idx) => <li onClick={() => this.onTodoClick(idx)}

@@ -3,3 +3,10 @@
   border-radius: 10px;
   cursor: pointer;
 }
+
+.note-to-show article .pin-btn{
+  background-color: inherit;
+  border: 1px solid black;
+  margin-inline-end: 0.2rem;
+  border-radius: 1rem;
+}
