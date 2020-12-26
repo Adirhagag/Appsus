@@ -1,8 +1,8 @@
 
 import { bookService } from "../services/book-service.js";
- import { ReviewAdd } from "./BookReviewAdd.jsx"
+import { BookReviewAdd } from "./BookReviewAdd.jsx"
 import { LongTxt } from "./BookLongTxt.jsx";
- import { ReviewDetails } from "./BookReview.jsx"
+import { BookReviewDetails } from "./BookReviewDetails.jsx"
 const { Link } = ReactRouterDOM;
 
 
@@ -61,7 +61,7 @@ export class BookDetails extends React.Component {
     }
     addReview = (reviewToAdd) => {
         console.log(reviewToAdd);
-        bookService.save(this.state.book, reviewToAdd).then(book => this.setState({ book }))
+        bookService.addReview(this.state.book, reviewToAdd).then(book => this.setState({ book }))
         // this.loadBook()
     }
 
@@ -92,10 +92,10 @@ export class BookDetails extends React.Component {
                 <p>description:</p>
                 <p>categories: {book.categories}</p>
                 <p className={this.checkPrice()}>{book.listPrice.amount}<i className={`fa fa-${bookService.getCurrency(book.listPrice.currencyCode)}-sign`}></i></p>
-                <button onClick={this.getReview}> add review</button>
-                {/* <ReviewAdd addReview={this.addReview} />
-               
-                {reviews && <ReviewDetails book={book} />} */}
+                {/* <button onClick={this.getReview}> add review</button> */}
+             
+                <BookReviewAdd addReview={this.addReview} /> 
+                {reviews && <BookReviewDetails book={book} />}
                 <button className="btn-close-details" onClick={this.onCloseModal}><i className="fa fa-window-close"></i></button>
 
             </div>

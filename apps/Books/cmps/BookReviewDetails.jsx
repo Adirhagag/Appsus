@@ -1,6 +1,6 @@
 import { bookService } from "../services/book-service.js";
 
-export class ReviewDetails extends React.Component {
+export class BookReviewDetails extends React.Component {
     state = {
         reviews:null
     }
@@ -23,7 +23,7 @@ export class ReviewDetails extends React.Component {
           const { reviews } = this.props.book
 
         return (
-
+           
 
             <div className="review-list">
                 <h1>list of rewiew:</h1>

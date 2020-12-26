@@ -9,7 +9,8 @@ export const bookService = {
   getNetworkBooks,
   findBook,
   getNextBook,
-  getPrevBook
+  getPrevBook,
+  removeBook
 
 
 };
@@ -506,6 +507,11 @@ function remove(book, reviewIdx) {
   // book.reviews = [...book.reviews]
   book.reviews = book.reviews.filter((rev, idx) => idx !== reviewIdx);
   return Promise.resolve(book);
+}
+function removeBook(bookId) {
+  books = books.filter(book => book.id !== bookId);
+  _saveTostorage
+  return Promise.resolve();
 }
 function getCurrency(currencyCode) {
   let currency = '';
