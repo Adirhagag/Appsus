@@ -2,7 +2,7 @@
 import { bookService } from "./services/book-service.js";
 import { BookList } from "./cmps/BookList.jsx";
 import {BookFilter} from "./cmps/BookFilter.jsx"
-import { eventBusService } from "../../services/eventBusService.js";
+import { eventBusService } from "../../../../services/eventBusService.js";
 
 export class BookApp extends React.Component {
 

@@ -11,7 +11,6 @@ export class AppHeader extends React.Component {
         this.setState({ isShowMenuHeader: !this.state.isShowMenuHeader }, () => console.log(this.state))
 
     }
-
     render() {
 
         return (
