@@ -35,10 +35,10 @@ export class EmailStatus extends React.Component {
                         <h1><i className="fa fa-inbox"></i>inbox ({countEmailRead}/{emails.length})</h1>
                         <button onClick={this.props.onShowStarredEmail}> <i className="fa fa-star" style={{ color: 'yellow' }}></i> Starred </button>
 
-                        <button onClick={this.props.onShowSentEmail}> <i className="fa fa-mail-bulk" style={{ color: 'rgb(68, 68, 68)' }}></i> Sent Mail</button>
+                        <button onClick={this.props.onShowSentEmail}> <i className="fa fa-share" style={{ color: 'rgb(68, 68, 68)' }}></i> Sent Mail</button>
                         <button><i className="fa fa-firstdraft">Drafts</i></button>
                         <progress value={countEmailRead} max={emails.length}> {countEmailRead}% </progress>
-
+                      
                     </div>
                 </section>
                     {isShowCompose && <EmailCompose onCloseFormSendingEmail={this.onCloseFormSendingEmail} onAddEmail={this.props.onAddEmail} />}

@@ -65,7 +65,7 @@ export class EmailCompose extends React.Component {
     render() {
 
         return (
-            <div className="email-compose-continer">
+            <div className="email-compose-continer   animate__animated animate__lightSpeedInRight">
                 <h3>New Messege</h3>
                 <form onSubmit={this.onSendEmail} className="email-compose">
                     <input ref={this.refInput}

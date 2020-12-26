@@ -52,7 +52,7 @@ export class EmailComposeBack extends React.Component {
     render() {
 
         return (
-            <div className="email-compose-back" onClick={this.onAnimate}>
+            <div className="email-compose-back  animate__animated animate__fadeIn" onClick={this.onAnimate}>
                 <button onClick={this.props.ontoggleSendEmailBack}>Close</button>
                 <form onSubmit={this.onSendEmail} className="email-compose">
                     <input ref={this.refInput}

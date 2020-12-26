@@ -5,5 +5,6 @@
 
 @import './apps/note/NoteMain.css';
 @import './apps/note/cmps/NoteList.css';
-@import './apps/basics/UserMsg.css'
+@import './apps/basics/UserMsg.css';
 
+@import './apps/books/BooksMain.css'

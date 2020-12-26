@@ -23,6 +23,7 @@ export class AppHeader extends React.Component {
                     <li><NavLink activeClassName="my-active" exact to="/"><i className="fas fa-home">Home</i></NavLink></li>
                     <li><NavLink exact to="/email"><i className="fas fa-envelope">Email</i></NavLink></li>
                     <li><NavLink exact to="/note"> <i className="fas fa-pager"></i>Note</NavLink></li>
+                    <li><NavLink exact to="/book"> <i className="fa fa-book"></i>Books</NavLink></li>
 
                 </ul>
 

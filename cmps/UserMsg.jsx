@@ -19,7 +19,7 @@ export class UserMsg extends React.Component {
     componentDidMount() {
         this.unsubscribe = eventBusService.on('showMsg', (msg) => {
             this.setState({ msg, isShowMsg: true},()=>console.log(this.state));
-              setTimeout(this.onCloseUserMsg, 3000);
+              setTimeout(this.onCloseUserMsg, 2000);
         });
     }
 

@@ -5,7 +5,7 @@
     export function EmailDetailsMini({ email }) {
     
         return (
-            <div className="email-deatils-mini ">
+            <div className="email-deatils-mini animate__animated animate__bounce ">
                 {/* <h4>{hours}:{minutes}(befor{currHour}hours)</h4> */}
                 <h1 className="email-subject">{email.subject}</h1>
                 <div className="sending-details">
@@ -14,7 +14,6 @@
                 </div>
                 <p className="email-body">{email.body}</p>
                
-              
 
 
             </div>
