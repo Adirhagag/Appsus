@@ -17,7 +17,7 @@ export class AppHeader extends React.Component {
         return (
             <header className="main-header">
 
-                <h1 className="logo"><img src="../assets/img/appsus.png" />Appsus</h1>
+                <h1 className="logo"><img src="./assets/img/appsus.png" />Appsus</h1>
                 <button className="memu-header" onClick={this.onToggleMenuHeader} ><i className="fa fa-th-large"></i></button>
                 <ul className={`main-nav ${!this.state.isShowMenuHeader ? 'hide' : ''}`}>
                     <li><NavLink activeClassName="my-active" exact to="/"><i className="fas fa-home">Home</i></NavLink></li>
