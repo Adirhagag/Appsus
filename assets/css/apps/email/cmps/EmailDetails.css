@@ -42,6 +42,7 @@ h4 {
         padding: 0.5rem;
       align-items: center;
         top: 50%;
+        z-index: 2;
 }
 .email-deatils button:hover {
     background-color: lightgray;
@@ -50,6 +51,9 @@ h4 {
 
 input {
     border: 1px solid #555;
+}
+.email-deatils h4{
+    color:#5378e7;
 }
 @media (max-width: 650px){
 

@@ -1,5 +1,6 @@
 import { emailService } from "../services/email-service.js"
 import {EmailComposeBack} from "../cmps/EmailComposeBack.jsx"
+const { Link } = ReactRouterDOM;
 
 
 export class EmailDetails extends React.Component {
@@ -36,9 +37,10 @@ export class EmailDetails extends React.Component {
 
         return (
             <div className="email-deatils ">
+                <Link to="/email"><button><i className="fa fa-times-circle"></i></button></Link>
                 <div className="email-title">
-                <p className="sender-mail">{`send from:<${email.senderName}@gmail.com>`}</p>
-                <h4>{hours}:{minutes}(befor{currHour}hours)</h4>
+                <p className="sender-mail">{`send from: <${email.senderName}@gmail.com>`}</p>
+                <h4>{hours}:{minutes}(befor {currHour} hours)</h4>
                 </div>
                 
                 <div className="email-details-info">
@@ -49,7 +51,6 @@ export class EmailDetails extends React.Component {
                 <button onClick={ ()=>this.ontoggleSendEmailBack()}>Replay<i className="fa fa-reply"></i></button>
                 </div>
                 { this.state.isSendEmailBack&&<EmailComposeBack senderName={this.state.email.senderName} ontoggleSendEmailBack={this.ontoggleSendEmailBack}/>}
-
 
                 
             </div>

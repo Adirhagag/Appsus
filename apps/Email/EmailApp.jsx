@@ -2,6 +2,9 @@ import { emailService } from "./services/email-service.js"
 import { EmailList } from "./cmps/EmailList.jsx"
 import { EmailFilter } from "./cmps/EmailFilter.jsx"
 import { EmailStatus } from "./cmps/EmailStatus.jsx"
+import { eventBusService } from "../../services/eventBusService.js";
+
+
 
 export class EmailApp extends React.Component {
   state = {
@@ -12,6 +15,7 @@ export class EmailApp extends React.Component {
       text: '',
       read: '',
       unread: '',
+      all:''
     },
     sortBy:{
       title:true,
@@ -44,19 +48,22 @@ export class EmailApp extends React.Component {
     this.loadEmails();
     this.loadCountEmailUnread()
     this.loadCountEmailRead();
-
+    eventBusService.emit('showMsg', { type: 'success', txt: `Email was reading`})
+    
   }
   onStarred=(emailId)=>{
     emailService.setEmailStarres(emailId)
     this.loadEmails();
     this.loadCountEmailUnread()
     this.loadCountEmailRead();
+    eventBusService.emit('showMsg', { type: 'success', txt: `Email starred`})
   }
   onRemoveEmail = (emailId) => {
     emailService.removeEmail(emailId)
     this.loadEmails();
     this.loadCountEmailUnread()
     this.loadCountEmailRead();
+    eventBusService.emit('showMsg', { type: 'success', txt: `Email was successfully remove`})
   }
   onShowStarredEmail=()=>{
     emailService.getEmailStarres().then(emails=>{
@@ -91,6 +98,10 @@ export class EmailApp extends React.Component {
         return !email.isRead
       });
 
+    }else if(filterBy.all){
+     copyEmails=emailService.getEmailsForFilter();
+    // copyEmails=copyEmails;
+
     }
     const filterRegex = new RegExp(filterBy.text, 'i');
     copyEmails = copyEmails.filter(email => filterRegex.test(email.body));
@@ -110,6 +121,7 @@ export class EmailApp extends React.Component {
     this.loadEmails();
     this.loadCountEmailUnread()
     this.loadCountEmailRead();
+    eventBusService.emit('showMsg', { type: 'success', txt: `email was successfully sent`})
     
 
   }

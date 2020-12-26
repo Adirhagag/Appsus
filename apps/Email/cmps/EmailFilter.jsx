@@ -6,6 +6,7 @@ export class EmailFilter extends React.Component {
             text: '',
             read: '',
             unread: '',
+            all:''
         },
         sortBy:{
             title:true,
@@ -24,6 +25,21 @@ export class EmailFilter extends React.Component {
         if(ev.target.type==='checkbox')value=ev.target.checked
         console.log(value);
         let filterBy = {...this.state.filterBy}
+        if(ev.target.name==='read'){
+            filterBy['all'] = false;
+            filterBy['unread'] = false;
+          
+        }
+        else  if(ev.target.name==='uread'){
+            filterBy['all'] = false;
+            filterBy['read'] = false;
+    
+        } 
+        else  if(ev.target.name==='all'){
+            filterBy['unread'] = false;
+            filterBy['read'] = false;
+            // ev.target.checked=false;
+        } 
         filterBy[ev.target.name] = value;
 
         this.setState({filterBy}, callback);
@@ -45,6 +61,8 @@ export class EmailFilter extends React.Component {
         return <section className="email-filter">
             <i className="fa fa-search"></i>
             <input type="text" placeholder="Search Mail:" name="text" onChange={this.handelChange}  ref={this.refInput} autoComplete="off"/>
+            <input type="checkbox" name="all" id="all"  onChange={this.handelChange} ></input>
+            < label htmlFor="all">All</label><br></br>
             <input type="checkbox"  name="read" id="read" onChange={this.handelChange} ></input>
             < label htmlFor="read">Read</label><br></br>
             <input type="checkbox" name="unread" id="Unread"  onChange={this.handelChange} ></input>

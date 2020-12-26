@@ -1,0 +1,14 @@
+.emoji-table {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+}
+.emoji-table td{
+    cursor: pointer;
+}
+.emoji-table td:hover{
+    border: 1em solid none;
+    padding: 0;
+    transition: t;
+}

@@ -15,10 +15,12 @@
   border: 2px solid;
   position: absolute;
   bottom: 0;
-  top: 45%;
+  top: 56%;
   right: 5%;
   border-radius: 10px;
-  position: absolute;
+  position: fixed;
+  background-color: white;
+  z-index: 3;
 }
 
 .email-compose-continer .email-compose-btn .btn-close-form {
@@ -27,31 +29,49 @@
   border: 0;
   border-radius: 0;
   font-weight: bold;
+  /* border: 1px solid; */
 }
 
-.email-compose-btn {
-  justify-content: space-between;
-}
 
-.email-compose-continer .send-mail-btn {
+
+ .send-mail-btn {
   background-color: lightskyblue;
   color: rgb(68, 68, 68);
-  width: 2rem;
-  border: 0;
+  width: 5rem;
+  /* border: 1px solid; */
   border-radius: 0;
   font-weight: bold;
   align-items: center;
+  padding: 0.5em;
 }
 
 .email-compose-continer .email-compose-btn {
   color: rgb(68, 68, 68);
   display: flex;
+  position: absolute;
+ 
+ bottom: 0;
+  gap: 20px;
+  right: 0;
+}
+.email-compose-btn .btn-emoji{
+  width: 2rem;
+  /* border: 1px solid black; */
+  border-radius: 0;
+  border: none;
+}
+.email-compose-btn .btn-add-pic{
+  width: 2rem;
+  border-radius: 0;
+  border: none;
 }
 
 @media (max-width: 650px) {
   .email-compose-continer {
     position: fixed;
-    left: 50%;
-    top: 0;
+    left: 41%;
+    right: 10%;
+   
   }
+ 
 }

@@ -1,0 +1,52 @@
+.book-details{
+    background-color: #f0f5f9;
+    width: 50%;
+    height: 100vh;
+    margin: auto;
+    /* padding: 10px; */
+    margin-top: 1em;
+    border-radius: 20%;
+    border: 2px solid;
+    border: 1px solid #ccc;
+    padding: 12px;
+    box-shadow: 1px 5px 0 #4d4f52, inset 0 5px 0 #ffffff;
+    border-radius: 30px;
+    text-align: center;
+    position: relative;
+}
+.sale-img{
+    width: 65px;
+    left: 0px;
+    top: 0;
+    position: absolute;
+}
+.prev-book{
+    position: fixed;
+    top: 50%;
+    left: 10%;
+}
+.next-book{
+    position: fixed;
+    top: 50%;
+    right: 10%;
+}
+ .book-details .btn-close-details{
+    position: absolute;
+    top: 6px;
+    right: 15px;
+    border: none;
+    background: none;
+    box-shadow: none;
+    padding-top: 0;
+    width: 0;
+}
+.book-details button{
+    width: 20%;
+    box-shadow: 1px 5px 0 #413f3f, inset 0 5px 0 rgba(144, 216, 212, 0.58);
+    border-radius: 10px;
+    background-color: #8a8a8a;
+    padding: 0.5em;
+}
+.book-details .book-img{
+    width: 35%;
+}

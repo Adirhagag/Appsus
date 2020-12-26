@@ -23,6 +23,8 @@ progress[value]::-webkit-progress-value {
   display: flex;
   flex-direction: column;
   gap: 1em;
+  margin-top: 12px;
+  /* color:rgb(68, 68, 68); */
 }
 
 .email-status button {
@@ -33,12 +35,15 @@ progress[value]::-webkit-progress-value {
   position: relative;
   line-height: 3em;
   font-size: 1em;
-  align-self: flex-start;
+  align-items: center;
   padding: 0 3em;
   transition: padding .3s;
   width: 100%;
+  text-align: center;
 }
-
+.email-status .btn-compose{
+  margin-top: 11px;
+}
 .email-status {
   display: flex;
   flex-direction: column;
@@ -49,10 +54,12 @@ progress[value]::-webkit-progress-value {
   border-radius: 0;
   width: 100%;
 }
-.email-status .menu-status{
+.menu-status{
   background: none;
-  border: none;
   display: none;
+  padding: 1em;
+  border: 1px solid;
+  border-radius: 10%;
 }
 .btn-compose-mobile{
   color: white;
@@ -63,34 +70,56 @@ progress[value]::-webkit-progress-value {
     bottom: 0;
     right: 0;
     display: none;
+    z-index: 3;
 
 
-}
-
-@media (max-width: 650px) {
-  .email-status .menu-status{
+  }
+  @media (max-width: 650px) {
+    
+    .email-status.hide{
+      /* display: block; */
+      max-height: 100vh;
+      
+    }
+  .menu-status{
     display: block;
   }
+ 
   .email-status{
     position: fixed;
     top: 0;
-    max-height: 100vh;
-    border-right: 1px solid #616060;
-    flex-direction: column;
-    transform: translateY( 79px);
+    max-height:0%;
+    border: 1px solid #616060;
+    transform: translate( 16%,57px);
     overflow: hidden;
     transition: max-height .8s;
-    background-color: rgb(103 99 99 / 90%);
+    z-index: 2;
+    width: 80vw;
+    /* display: none; */
+    
   }
   .email-status button{
     border-radius: 0;
     width: 100%;
-   
-
+    background-color: rgb(103 99 99 / 90%);
+    color: white;
+    
   }
+  .email-status button:hover{
+    background-color: #f0f5f9;
+    color: rgb(103 99 99 / 90%);
+    
+  }
+  .email-status-info{
+    gap: 0; 
+     margin-top: 0;
+  }
+  
   .email-status .btn-compose{
-   display: none;
+    display: none;
+    
   }
+  
   .email-status h1 {
     width: 100%;
   }

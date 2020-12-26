@@ -1,7 +1,10 @@
+import { BookApp } from './apps/Books/BookApp.jsx'
+import {BookDetails} from './apps/Books/cmps/BookDetails.jsx'
 import { EmailApp } from './apps/Email/EmailApp.jsx'
 import { NoteApp } from './apps/Notes/NoteApp.jsx'
 import { Home } from './pages/Home.jsx'
 import { AppHeader } from './cmps/AppHeader.jsx'
+import { UserMsg } from './cmps/UserMsg.jsx'
 import {EmailDetails} from './apps/Email/cmps/EmailDetails.jsx'
 import { EmailCompose } from './apps/Email/cmps/EmailCompose.jsx'
 import { NoteEdit } from './apps/Notes/NoteEdit.jsx'
@@ -18,12 +21,14 @@ export class RootCmp extends React.Component {
       <Router>
         <section className="app">
           <AppHeader />
-          {/* <UserMsg /> */}
+      <UserMsg />
           <Switch>
             {/* <Route path="/book" component={BookApp} /> */}
+            <Route path="/book/:bookId" component={BookDetails} />
             <Route path="/email/:emailId" component={EmailDetails} />
             <Route path="/emailCompose" component={EmailCompose} />
             <Route path="/note/edit/:noteId" component={NoteEdit} />
+            <Route path="/book" component={BookApp} />
             <Route path="/email" component={EmailApp} />
             <Route path="/note" component={NoteApp} />
             <Route path="/" component={Home} />

@@ -7,8 +7,8 @@
     text-align: center;
     background-color: #f0f5f9;
     border-radius: 2em;
-    width: 50%;
-    justify-content: space-between;
+    width: 80%;
+
 }
 .email-filter input{
     border: none;
@@ -21,4 +21,14 @@
 }
 .email-search{
     width: 50%;
+}
+@media (max-width: 1026px){
+    .email-filter{
+        width: 100vw;
+    }
+    .email-filter>*{
+        width: 80%;
+    }
+
+
 }
